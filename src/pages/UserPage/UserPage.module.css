@@ -1,0 +1,98 @@
+.userTitle{
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+.userProfile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.userAvatar {
+    display: flex;
+    margin-top: 20px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: #333;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;    
+}
+
+.userAvatar img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.useInfo {
+    font-size: 1.2em;
+}
+
+.indicateCircle{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: greenyellow;
+    align-self: flex-end;
+    margin-right: 45px;
+    margin-bottom: 30px;
+}
+
+.personalInfo{
+    border-top: 3px solid rgb(41, 41, 41) ;
+    width: 100%;
+    padding-top: 30px;
+    margin-top: 30px;
+}
+
+.personalInfo{
+   
+
+    
+}
+
+.personalInfo h1{
+    margin: 30px;
+}
+
+.infoContainer {
+    border-top: 2px solid  rgb(41, 41, 41);
+    padding: 20px;
+    margin-top: 20px; 
+}
+
+.changeBtn {
+    background-color: #5a5a5a;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.info {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.changeBtn:hover{
+    background-color: #8b8b8b;
+}
+
+.user{
+    max-width: 800px;
+    margin: 0 auto;
+    border: px solid #292929
+
+}

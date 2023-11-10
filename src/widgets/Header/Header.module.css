@@ -1,0 +1,98 @@
+.header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+   
+}
+
+.header nav {
+    display: flex;
+    justify-content: center;
+   
+    padding: 10px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.header nav a:hover {
+   background-color: rgb(71, 71, 71);
+   border-radius: 5px;
+}
+
+
+.header nav a:hover {
+    text-decoration: underline;
+}
+
+.searchContainer {
+    text-align: center;
+    margin: 0px auto;
+}
+
+.searchContainer input {
+    width: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+.searchContainer button {
+    background-color: #5b5b5b;
+    color: white;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+
+.searchContainer button:hover {
+    background-color: #6b6b6b;
+}
+
+.headerRight{
+    display: flex;
+}
+
+.headerRight button{
+    margin: 5px;
+    display: flex;
+    border: none;
+    background: none;
+    border-radius: 50%;
+    color: #ffffff;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.headerRight button:hover{
+    background-color: #8d8d8d;
+}
+
+.userContainer {
+    position: relative;
+    cursor: pointer;
+    float: right;
+    margin-right: 20px;
+  }
+  
+  .userImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+  }

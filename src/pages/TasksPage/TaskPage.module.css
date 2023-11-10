@@ -1,0 +1,18 @@
+.listGroup{
+    display: flex;
+}
+
+.addList{
+    width: 150px;
+    height: 100px;
+    margin: 20px;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(141, 141, 141);
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.addList:hover{
+    background-color: #a19e9e;
+}
