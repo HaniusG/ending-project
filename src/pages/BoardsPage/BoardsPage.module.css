@@ -96,5 +96,8 @@
     background-color: #4b4b4b;
   }
 
+  .appContainer{
+    display: flex;
+  }
 
 

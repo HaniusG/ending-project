@@ -16,3 +16,7 @@
 .addList:hover{
     background-color: #a19e9e;
 }
+
+.appContainer{
+    display: flex;
+}

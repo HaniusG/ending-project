@@ -2,11 +2,16 @@ import React from "react";
 import styles from './BoardsPage.module.css'
 import  TemplatePreviews  from "features/TemplatePreviews/TemplatePreviews";
 import { FaClock, FaBarsProgress, FaUserLarge, FaGear, FaEye, FaConnectdevelop } from "react-icons/fa6";
-
+import  SideNavBar  from "widgets/SideNavBar/SideNavBar";
+import Header from "widgets/Header/Header";
 const BoardsPage = () => {
   return (
-    <div>
-      <h3>Most popular templates</h3>
+    <div >
+      <Header/>
+      <div className={styles.appContainer}>
+        <SideNavBar/>
+        <div>
+        <h3>Most popular templates</h3>
       <span>Get going faster with a template from the Trello community or</span>
       <label htmlFor="exampleSelect" placeholder="https://trello.com/u/hanius/boards"></label>
       <select id="exampleSelect" className={styles.select}>
@@ -33,6 +38,11 @@ const BoardsPage = () => {
       <TemplatePreviews backgroundColor="#76736B" text="Ha" isTemplate={false}/>
       <TemplatePreviews backgroundColor="#AE4D7B" text="My trello Board" isTemplate={false}/>
       </div>
+
+      <div>
+
+      </div>
+
       </div>
 
       <div className={styles.fullTempDiv}>
@@ -58,6 +68,9 @@ const BoardsPage = () => {
 
       </div>
       </div>
+        </div>
+      </div>
+      
       
       
 

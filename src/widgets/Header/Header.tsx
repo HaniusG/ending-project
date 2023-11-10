@@ -7,13 +7,14 @@ import {  } from "react-icons/fa6";
 const Header = () => {
   return (
     <header className={styles.header}>
-      <h1>My Website</h1>
+      <h1>Trello</h1>
       <nav>
         <a href="#">Workspaces  <FaChevronDown/></a>
         <a href="#">Recent  <FaChevronDown/></a>
         <a href="#">Starred  <FaChevronDown/></a>
         <a href="#">Templates  <FaChevronDown/></a>
       </nav>
+    
 
       <div className={styles.searchContainer}>
         <input type="text"  placeholder="Search..." />

@@ -4,7 +4,7 @@ import styles from "./RegisterPage.module.css";
 const RegisterPage = () => {
   return (
     <div className={styles.registrationContainer}>
-      <h2>Register</h2>
+      <h2>Registration</h2>
       <form>
         <label htmlFor="username">Username</label>
         <input type="text" id="username" />
