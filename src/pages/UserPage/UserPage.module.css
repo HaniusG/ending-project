@@ -96,3 +96,6 @@
     border: px solid #292929
 
 }
+.appContainer{
+    display: flex;
+}

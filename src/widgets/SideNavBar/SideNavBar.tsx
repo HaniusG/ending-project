@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './SideNavBar.module.css'
+import { Link } from 'react-router-dom'
 
 
 const SideNavBar = () => {
@@ -7,9 +8,9 @@ const SideNavBar = () => {
     <div className={styles.sidebar}>
           <nav>
             <ul>
-              <li>Boards</li>
-              <li>Templates</li>
-              <li>Home</li>
+              <li><Link to='/boards'>Boards</Link></li>
+              <li><Link to='/tasks'>Tasks</Link></li>
+              <li><a href="">Home</a></li>
             </ul>
           </nav>
           <h1>

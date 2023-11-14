@@ -1,0 +1,17 @@
+.signIn{
+    background-color: #b23030;
+    color: aliceblue;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+}
+.signIn a{
+    text-decoration: none;
+    color: aliceblue;
+    padding: 10px;
+}
+
+.authoriseDiv{
+    display: flex;
+    justify-content: space-around;
+}

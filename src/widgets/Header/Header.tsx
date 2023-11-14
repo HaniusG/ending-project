@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { FaBell, FaQuestion, FaSearchengin, FaChevronDown } from "react-icons/fa6";
 import {  } from "react-icons/fa6";
+import { UserPageProps } from "pages/UserPage/UserPage.interface";
 
-const Header = () => {
+const Header: React.FC= () => {
   return (
     <header className={styles.header}>
       <h1>Trello</h1>
