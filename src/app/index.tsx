@@ -32,13 +32,13 @@ const App: React.FC = () => {
   return (
     <div className="app dark">
         
-         {user ? <Header user={user}/>: null}
+         {user ? <Header user={user} handleSignOut={handleSignOut}/>: null}
          <div style={{display: "flex"}}>
-         <BrowserRouter>
+        
          {user ?<SideNavBar/>: null}
           <Suspense fallback={"Loading"}>
             <Routes>
-              <Route path="/home" element={<LoginPage />} />
+              <Route path="/" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route
                 path="/user"
@@ -50,9 +50,7 @@ const App: React.FC = () => {
 
             <Routes></Routes>
           </Suspense>
-        </BrowserRouter>
-         </div>
-          
+         </div>   
       </div>
   );
 };

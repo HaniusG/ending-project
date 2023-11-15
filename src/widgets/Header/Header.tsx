@@ -1,11 +1,19 @@
-import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { FaBell, FaQuestion, FaSearchengin, FaChevronDown } from "react-icons/fa6";
-import {  } from "react-icons/fa6";
 import { HeaderProps } from "./Header.interface";
+import React, {useState} from "react";
 
-const Header: React.FC<HeaderProps>= ({user}) => {
+const Header: React.FC<HeaderProps>= ({user, handleSignOut}) => {
+  const [isUserMenuOpen, setUserMenuOpen] = useState<boolean>(false)
+
+  const toggleUserMenu = (): void => {
+    setUserMenuOpen(!isUserMenuOpen);
+  }
+
+  
+  
   return (
     <header className={styles.header}>
       <h1>Trello</h1>
@@ -24,17 +32,34 @@ const Header: React.FC<HeaderProps>= ({user}) => {
       <div className={styles.headerRight}>
         <button><FaBell/></button>
         <button><FaQuestion/></button>
-        <div className={styles.userContainer}>
+        <div className={styles.userContainer} onClick={toggleUserMenu}>
+        
         {
             user?.photoURL ?
               <img
-            src={user.photoURL}
+              
+            src={user?.photoURL}
             alt="User Avatar"
             className={styles.userImage}
           />: <div>No photo</div>
           }
-
-          
+          {
+                  isUserMenuOpen ? (
+                    <div className={styles.userMenu}>
+                      <ul>
+                        <li>
+                          <Link to='/user'>Profile</Link>
+                        </li>
+                        <li>
+                          <a href='#'>Settings</a>
+                        </li>
+                        <li onClick={handleSignOut}>
+                          <Link to='/'>Sign out</Link>
+                        </li>
+                      </ul>
+                    </div>
+                  ) : null
+}
         </div>
       </div>
       
