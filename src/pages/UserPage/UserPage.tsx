@@ -25,8 +25,8 @@ const UserPage: React.FC<UserPageProps> = ({ user, handleSignOut }) => {
             <h1>Personal Info</h1>
 
             <div className={styles.infoContainer}>
-              <h2 className={styles.info}>{user?.displayName}</h2>
-              <span className={styles.changeBtn}>John Doe</span>
+              <h2 className={styles.info}>Username</h2>
+              <span className={styles.changeBtn}>{user?.displayName}</span>
             </div>
 
             <div className={styles.infoContainer}>
@@ -43,8 +43,6 @@ const UserPage: React.FC<UserPageProps> = ({ user, handleSignOut }) => {
               <h2 className={styles.info}>Password</h2>
               <span className={styles.changeBtn}>*********</span>
             </div>
-            <button onClick={handleSignOut}>
-            </button>
           </div>
         </div>
       </div>

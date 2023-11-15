@@ -91,9 +91,8 @@
 }
 
 .user{
-    max-width: 800px;
+    min-width: 1000px;
     margin: 0 auto;
-    border: px solid #292929
 
 }
 .appContainer{

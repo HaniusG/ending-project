@@ -10,7 +10,7 @@ const SideNavBar: React.FC = () => {
             <ul>
               <li><Link to='/boards'>Boards</Link></li>
               <li><Link to='/tasks'>Tasks</Link></li>
-              <li><Link to="">Home</Link></li>
+              <li><Link to="/home">Home</Link></li>
             </ul>
           </nav>
           <h1>
