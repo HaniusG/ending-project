@@ -8,19 +8,11 @@ import SideNavBar from "widgets/SideNavBar/SideNavBar";
 const UserPage: React.FC<UserPageProps> = ({ user, handleSignOut }) => {
   return (
     <div>
-        <Header/>
-        <div className={styles.appContainer}>
-        <SideNavBar/>
+       
         <div className={styles.user}>
       <div className={styles.userProfile}>
         <div className={styles.userAvatar}>
-          {
-            user?.photoURL ?
-              <img
-            src={user.photoURL}
-            alt="User Avatar"
-          />: <div>No photo</div>
-          }
+         
           
           <div className={styles.indicateCircle}></div>
         </div>
@@ -55,11 +47,7 @@ const UserPage: React.FC<UserPageProps> = ({ user, handleSignOut }) => {
         </div>
       </div>
     </div>
-        </div>
-
-
-    </div>
-    
+        </div>  
   );
 };
 

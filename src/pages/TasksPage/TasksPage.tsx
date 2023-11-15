@@ -6,17 +6,11 @@ import SideNavBar from "widgets/SideNavBar/SideNavBar";
 const TaskPage = () => {
   return (
     <div>
-      <Header />
-      <div className={styles.appContainer}>
-        <div>
-          <SideNavBar/>
-        </div>
         <div className={styles.listGroup}>
           <TaskGroup />
           <button className={styles.addList}>+ Add another list</button>
         </div>
       </div>
-    </div>
   );
 };
 

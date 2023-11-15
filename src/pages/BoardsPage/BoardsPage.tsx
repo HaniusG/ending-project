@@ -7,9 +7,6 @@ import Header from "widgets/Header/Header";
 const BoardsPage = () => {
   return (
     <div >
-      <Header/>
-      <div className={styles.appContainer}>
-        <SideNavBar/>
         <div>
         <h3>Most popular templates</h3>
       <span>Get going faster with a template from the Trello community or</span>
@@ -70,11 +67,7 @@ const BoardsPage = () => {
       </div>
         </div>
       </div>
-      
-      
-      
-
-    </div>
+  
   );
 };
 
