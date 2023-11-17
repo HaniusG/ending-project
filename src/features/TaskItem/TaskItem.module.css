@@ -1,0 +1,29 @@
+.bbutton{
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: white;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    align-items: center;
+    justify-content: center;
+}
+.bbutton:hover{
+    background-color: #969696;
+    
+}
+
+
+
+.taskName button p{
+padding-bottom: 8px;
+
+}
+
+.taskName{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

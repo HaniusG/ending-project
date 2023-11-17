@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Header from "widgets/Header/Header";
 import SideNavBar from "widgets/SideNavBar/SideNavBar";
 
+
 const UserPage: React.FC<UserPageProps> = ({ user, handleSignOut }) => {
   return (
       <div className={styles.user}>
