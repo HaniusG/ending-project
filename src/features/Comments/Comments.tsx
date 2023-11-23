@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Comments.module.css";
 import Comment from "features/Comment/Comment";
 import { CommentsProps } from "./Comment.interface";
+import { FaComment } from "react-icons/fa6";
 
 const Comments: React.FC<CommentsProps> = ({ comments }) => {
   
@@ -11,7 +12,7 @@ const Comments: React.FC<CommentsProps> = ({ comments }) => {
   return (
 
     <div className={styles.commentsTab}>
-      <h2>Comments</h2>
+      <h1>Comments  </h1>
 
       
       <ul className={styles.commentsList}>

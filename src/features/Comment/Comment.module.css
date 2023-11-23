@@ -1,8 +1,5 @@
 .commentContainer {
-    padding: 10px;
-    border: 1px solid #707070;
     border-radius: 8px;
-    background-color: #2b2a2a;
   }
   
   .userInfo img{
@@ -15,8 +12,6 @@
   
   .userInfo {
     display: flex;
-    align-items: center;
-    margin-bottom: 10px;
   }
   
   .userInfo p {
@@ -26,6 +21,7 @@
   
   .userInfo span {
     color: #aaaaaa;
+    font-size: 10px;
   }
   
   .commentText {
@@ -39,11 +35,12 @@
   }
 
   .parentComment{
-
     padding: 10px;
     border-radius: 10px;
   }
 
-  .childCommment{
-   
-  }  
+  .commentText{
+    margin-top: 10px;
+    color: rgb(217, 224, 231);
+    width: 800px;
+  }

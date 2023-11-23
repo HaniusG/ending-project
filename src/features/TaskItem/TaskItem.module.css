@@ -2,18 +2,21 @@
     border: none;
     cursor: pointer;
     background: none;
-    color: white;
+    color: #9FADBC;
     text-align: center;
     width: 30px;
     height: 30px;
     border-radius: 3px;
     align-items: center;
     justify-content: center;
+    margin-top: 5px;
+    border-radius: 10px;
 }
 .bbutton:hover{
-    background-color: #969696;
-    
+    background-color: #282F27;
 }
+
+
 
 
 

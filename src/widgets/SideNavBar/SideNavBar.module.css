@@ -11,7 +11,7 @@
   }
 
   .sidebar li:hover {
-    background-color: #414141;
+    background-color: #333C43;
   }
 
   .sidebar{
@@ -20,7 +20,7 @@
   }
 
   .sidebar a {
-   color: aliceblue;
+   color: #9EACBA;
    text-decoration: none;
    display: block;
    margin: 0;

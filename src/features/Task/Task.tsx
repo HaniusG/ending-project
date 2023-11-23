@@ -23,9 +23,9 @@ const Task: React.FC<TaskPropsI> = ({item, handleCommentShow}) => {
           <TaskItem i={i} key={i.id} handleCommentShow={handleCommentShow}/>
         )
       }
-      <div>
+      <div className={styles.taskBottom}>
         <button className={styles.addButton}>+ Add a card</button>
-        <button className={styles.bbutton}>
+        <button className={styles.copyButton}>
           <FaCopy />
         </button>
       </div>

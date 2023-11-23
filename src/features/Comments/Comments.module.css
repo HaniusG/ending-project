@@ -1,5 +1,4 @@
 .commentsTab {
-  border: 1px solid #ccc;
   padding: 15px;
   margin: 20px;
   border-radius: 8px;
@@ -9,7 +8,7 @@
   left: 0;
   right: 0;
   width: 1200px;
-  background-color: #3c3c3c;
+  background-color: #323940;
 
 }
 
@@ -18,11 +17,15 @@
   padding: 0;
 }
 
-.commentsList li {
-}
 
 .comment {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 4px;
+}
+.commentsTab h1{
+  margin-bottom: 20px;
+  margin-left: 0px;
+  border-bottom: 2px solid #282E33;
+  padding: 20px;
 }

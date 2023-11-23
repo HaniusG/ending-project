@@ -8,13 +8,13 @@
     margin: 20px;
     border-radius: 15px;
     border: none;
-    background-color: rgb(141, 141, 141);
+    background-color: #8a949e;
     color: aliceblue;
     cursor: pointer;
 }
 
 .addList:hover{
-    background-color: #a19e9e;
+    background-color: #8d99a7;
 }
 
 .appContainer{

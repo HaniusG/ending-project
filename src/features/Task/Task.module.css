@@ -2,41 +2,42 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0px 17px ;
 }
 
-
-
 .taskGroup{
-    width: 300px;
-    background-color: #5c5c5c;
+    background-color: #101204;
     border-radius: 20px;
-    padding: 20px;
-    margin: 20px;
+    padding: 20px 0 10px 0;
+    margin: 10px;
     height: min-content;
-
+    width: 350px;
 }
 
 .taskGroup ul {
     list-style: none;
     padding: 0;
-    margin: 20px;
-   
+    margin: 10px;
 }
 
 .taskGroup li {
     background-color: #212121;
-    margin: 0 0 10px 0;
-    padding: 15px;
-    border-radius: 5px;
+    margin: 0 0 0 0;
+    padding: 0px 10px 0px 10px;
+    border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
+}
+
+.taskGroup li:hover {
+    cursor: pointer;
 }
 
 .bbutton{
     border: none;
     cursor: pointer;
     background: none;
-    color: white;
+    color: #9FADBC;
     text-align: center;
     width: 30px;
     height: 30px;
@@ -44,22 +45,39 @@
     align-items: center;
     justify-content: center;
 }
-.bbutton:hover{
-    background-color: #969696;
-    
-}
+
+
 
 .addButton{
     border: none;
     cursor: pointer;
     background: none;
-    color: white;
+    color: #9FADBC;
     width: 270px;
     border-radius: 3px;
     text-align: left;
     padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
 }
 
-.addButton:hover {
-    background-color: #969696;
+.addButton:hover, .copyButton:hover,.bbutton:hover {
+    background-color: #1b1f1a;
+}
+
+.taskBottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 17px;
+}
+
+.copyButton{
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: #9FADBC;
+    border-radius: 5px;
+    text-align: left;
+    padding: 10px;
 }

@@ -3,6 +3,7 @@ import TaskGroup from "widgets/TaskGroup/TaskGroup";
 import styles from "./TaskPage.module.css";
 import { TaskGroupProps } from "./TaksPage.interface";
 import Comments from "features/Comments";
+import { log } from "console";
 
 
 const TaskPage: React.FC<TaskGroupProps> = ({
@@ -11,11 +12,16 @@ const TaskPage: React.FC<TaskGroupProps> = ({
   comments,
   isClicked
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean | undefined>(isClicked)
+
+
+  const [isOpen, setIsOpen] = useState(comments?.length!==0)
+console.log(isOpen);
+
   
   const modalRef = useRef<HTMLDivElement>(null)
 
-console.log(isOpen);
+
+
 
   const closeModal = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {      

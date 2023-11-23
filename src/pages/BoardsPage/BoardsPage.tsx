@@ -6,29 +6,14 @@ import  SideNavBar  from "widgets/SideNavBar/SideNavBar";
 import Header from "widgets/Header/Header";
 const BoardsPage = () => {
   return (
-    <div >
-        <div>
-        <h3>Most popular templates</h3>
-      <span>Get going faster with a template from the Trello community or</span>
-      <label htmlFor="exampleSelect" placeholder="https://trello.com/u/hanius/boards"></label>
-      <select id="exampleSelect" className={styles.select}>
-      <option value="" disabled selected hidden>Choose the category</option>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </select>
+    <div className={styles.boardPage}>
+      
+
       <div className={styles.fullTempDiv}>
-      <div className={styles.fullTemplates}>
-      <TemplatePreviews backgroundColor="#5F287B" text="Project Management" isTemplate={true}/>
-      <TemplatePreviews backgroundColor="#128EA2" text="Esim Template" isTemplate={true}/>
-      <TemplatePreviews backgroundColor="#36600A" text="Project Management" isTemplate={true}/>
-      <TemplatePreviews backgroundColor="#8D5E01" text="Project Team Hub" isTemplate={true}/>
-      </div>
-      <a href="">Browse the full gallery</a>
-      </div>
+     
       
       <div className={styles.fullTempDiv}>
-        <p><FaClock/> Recently viewed</p>
+        <h3><FaClock/> Recently viewed</h3>
       <div className={styles.fullTemplates}>
       <TemplatePreviews backgroundColor="#5F287B" text="Project Management" isTemplate={true}/>
       <TemplatePreviews backgroundColor="#128EA2" text="React.Js" isTemplate={false}/>
@@ -47,13 +32,19 @@ const BoardsPage = () => {
 
         <div>
           <div className={styles.workspaceDescript}>
+            <div className={styles.userInfo}>
             <img src="https://media.istockphoto.com/id/1149504274/photo/portrait-of-a-taiwanese-man.webp?s=612x612&w=is&k=20&c=V303PB-_s32NcD47Acei71NNmsMJV9_vaXT865V7Wog=" alt="" />
             <h4>Your Workspace</h4>
+            </div>
+           <div>
+          
             <button><FaBarsProgress/> Board</button> 
             <button><FaEye/> Views</button>
             <button><FaUserLarge/> Members</button>
             <button><FaGear/> Settings</button>
             <button><FaConnectdevelop/> Upgrades</button>
+           </div>
+           
 
           </div>
         </div>

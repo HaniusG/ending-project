@@ -12,9 +12,9 @@ const Replies: React.FC<RepliesProps> = ({ replies }) => {
             <div>
               <p>{reply.author.name}</p>
               <span>{reply.date}</span>
+              <div className={styles.replyText}>{reply.text}</div>
             </div>
           </div>
-          <div className={styles.replyText}>{reply.text}</div>
         </div>
       ))}
     </>

@@ -31,7 +31,7 @@ const App: React.FC = () => {
                 name: "Esim Esiminchyan",
                 image: "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
               },
-              text: "I think this looks cool",
+              text: "I think this looks cool, its the best task i have ever done, the thing is cool, the best part is the lorem for a while thats why this",
               date: new Date().toDateString(),
               replies: [
                 {
@@ -41,7 +41,7 @@ const App: React.FC = () => {
                     name: "Mike M.",
                     image: "https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                   },
-                  text: "No",
+                  text: "No, because youre thinking very simply and awkwardm, you dont think that this is too mucj",
                   date: new Date().toDateString(),
                 },
                 {
@@ -139,8 +139,11 @@ const App: React.FC = () => {
   ];
 
   const [user, setUser] = useState<User | null>(null);
-  const [comments, setComments] = useState<CommentProps[]>([])
+  const [comments, setComments] = useState<CommentProps[]>()
   const [isClicked, setIsClicked] = useState<boolean>(false)
+
+
+  
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -155,9 +158,11 @@ const App: React.FC = () => {
   };
 
   const handleCommentShow = (comments: CommentProps[], isClicked: boolean) =>{
-    setComments(comments)
+
     setIsClicked(isClicked)
+    setComments(comments)
   }
+  
 
   return (
     <div className="app dark">

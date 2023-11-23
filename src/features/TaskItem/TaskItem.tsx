@@ -11,8 +11,7 @@ import { TaskItemPropsI } from './TaskItem.interface';
     setIsClicked(true)
     handleCommentShow(i.comments, isClicked)
   }
-     
-  console.log("this is", isClicked);
+    
   
   return (
     <ul>

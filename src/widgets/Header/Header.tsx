@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
-import { FaBell, FaQuestion, FaSearchengin, FaChevronDown } from "react-icons/fa6";
+import { FaBell, FaQuestion, FaSearchengin, FaChevronDown, FaTrello } from "react-icons/fa6";
 import { HeaderProps } from "./Header.interface";
 import React, {useState} from "react";
 
@@ -16,7 +16,12 @@ const Header: React.FC<HeaderProps>= ({user, handleSignOut}) => {
   
   return (
     <header className={styles.header}>
-      <h1>Trello</h1>
+      <div className={styles.headerLogo}>
+        <h2><FaTrello/> </h2>
+        
+        <h2>Trello</h2>
+      </div>
+      
       <nav>
         <a href="#">Workspaces  <FaChevronDown/></a>
         <a href="#">Recent  <FaChevronDown/></a>
