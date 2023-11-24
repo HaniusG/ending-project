@@ -3,6 +3,7 @@ import { FaPen, FaAlignLeft, FaComment, FaCopy } from "react-icons/fa6";
 import styles from './Task.module.css'
 import { TaskPropsI } from "./Task.interface";
 import TaskItem from "features/TaskItem";
+import { Draggable } from "react-beautiful-dnd";
 
 
 
@@ -19,8 +20,29 @@ const Task: React.FC<TaskPropsI> = ({item}) => {
           <p>. . .</p>
         </button>
       </div>
-      {item.tasks.map((i) => 
-          <TaskItem i={i} key={i.id} />
+      {item.tasks.map((item, index) => 
+      {
+        return(
+          <Draggable key={item.id} draggableId={item.id.toString()} index={index}>
+            {
+              (provided)=>{
+                return(
+                  <div
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
+                    ref={provided.innerRef}
+                  >
+                    <TaskItem item={item} key={item.id} />
+
+                  </div>
+                  
+                )
+              }
+            }
+          </Draggable>
+        )
+      }
+          
         )
       }
       <div className={styles.taskBottom}>

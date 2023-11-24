@@ -1,20 +1,28 @@
 .listGroup {
   display: flex;
+  background: rgb(15,50,84);
+  background: linear-gradient(155deg, rgba(15,50,84,1) 0%, rgba(0,212,255,1) 100%);
+  width: 83vw;
+  height: 100vh;
 }
 
 .addList {
-  width: 150px;
-  height: 100px;
+  width: 300px;
+  height: 60px;
   margin: 20px;
   border-radius: 15px;
+  text-align: left;
+  padding-left: 10px;
   border: none;
-  background-color: #8a949e;
+  background-color: #a7b1bb;
   color: aliceblue;
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.3) 
 }
 
+
 .addList:hover {
-  background-color: #8d99a7;
+  background: rgba(255, 255, 255, 0.1)
 }
 
 .appContainer {

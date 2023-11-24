@@ -23,10 +23,10 @@ const Header: React.FC<HeaderProps>= ({user, handleSignOut}) => {
       </div>
       
       <nav>
-        <a href="#">Workspaces  <FaChevronDown/></a>
-        <a href="#">Recent  <FaChevronDown/></a>
-        <a href="#">Starred  <FaChevronDown/></a>
-        <a href="#">Templates  <FaChevronDown/></a>
+        <Link to="#">Workspaces  <span><FaChevronDown/></span></Link>
+        <Link to="#">Recent   <span><FaChevronDown/></span></Link>
+        <Link to="#">Starred  <span><FaChevronDown/></span></Link>
+        <Link to="#">Templates   <span><FaChevronDown/></span></Link>
       </nav>
     
 

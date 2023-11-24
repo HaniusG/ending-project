@@ -1,0 +1,78 @@
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .sidebar li {
+    margin: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+
+  .sidebar li:hover {
+    background-color: #333C43;
+  }
+
+  .sidebar{
+    width: 300px;
+    padding-right: 10px;
+  }
+
+  .sidebar a {
+   color: #9EACBA;
+   text-decoration: none;
+   display: block;
+   margin: 0;
+   padding: 10px;
+  }
+
+  .sidebar li span{
+    margin-left: 10px;
+    
+  }
+
+  .workspaces{
+    margin-top: 15px;
+    font-size: 14px;
+    border-top: 1px solid #31383d;
+    padding-top: 10px ;
+  }
+
+  .workspaces:hover{
+    background-color: none;
+  }
+
+  .workspaceTitle{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .workspaceTitle{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .workspaces li{
+    font-size: 20px;
+  }
+
+  .workspaceTitle button{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: #9EACBA;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .workspaceTitle button:hover{
+   background-color: #333C43;
+  }

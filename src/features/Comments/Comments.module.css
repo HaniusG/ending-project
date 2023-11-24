@@ -7,7 +7,7 @@
   margin-right: auto;
   left: 0;
   right: 0;
-  width: 1200px;
+  width: 1500px;
   background-color: #16181b;
   z-index: 2;
   min-height: 500px;
@@ -16,6 +16,7 @@
 .commentsList {
   list-style: none;
   padding: 0;
+  margin-left: 20px;
 }
 
 
@@ -26,7 +27,7 @@
 }
 .commentsTab h1{
   margin-bottom: 20px;
-  margin-left: 0px;
+  margin-left: 10px;
   border-bottom: 2px solid #282E33;
   padding: 20px;
 }

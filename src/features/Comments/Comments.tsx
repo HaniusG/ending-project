@@ -23,7 +23,8 @@ const Comments: React.FC<CommentsProps> = ({ comments }) => {
            
         </li>
       ))}
-      <h2>No comments yet</h2>
+
+      {!comments.length ? <h2>No comments yet</h2>: null}
       </ul>
     </div>
   );

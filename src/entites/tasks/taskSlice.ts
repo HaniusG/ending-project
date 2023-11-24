@@ -53,7 +53,7 @@ const initialState: initialStateTasks= {
                   author: {
                     id: 23,
                     name: "Esim Esiminchyan",
-                    image: "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
+                    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                   },
                   text: "I think this looks cool",
                   date: new Date().toDateString(),
@@ -63,7 +63,7 @@ const initialState: initialStateTasks= {
                       author: {
                         id: 26,
                         name: "Mike M.",
-                        image: "https://images.unsplash.com/photo-1533450718592-29d45635f0a9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                        image: "https://images.unsplash.com/photo-1627161683077-e34782c24d81?q=80&w=2006&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                       },
                       text: "No",
                       date: new Date().toDateString(),
@@ -98,7 +98,7 @@ const initialState: initialStateTasks= {
           taskState: "In Progress",
           tasks: [
             { 
-              id: 1,
+              id: 3,
               name: "test",
               comments: [
                 {
@@ -106,7 +106,7 @@ const initialState: initialStateTasks= {
                   author: {
                     id: 23,
                     name: "Esim Esiminchyan",
-                    image: "...",
+                    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                   },
                   text: "comment text",
                   date: new Date().toDateString(),
@@ -117,7 +117,7 @@ const initialState: initialStateTasks= {
               ],
             },
             {
-              id: 2,
+              id: 4,
               name: "using",
               comments: [
                 

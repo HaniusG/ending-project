@@ -1,17 +1,31 @@
-.signIn{
-    background-color: #b23030;
+.signInGoogle, .signInGithub{
     color: aliceblue;
     margin-top: 10px;
     border: none;
     border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
 }
+
+.signInGoogle:hover{
+    background-color: #e16a6a;
+}
+
+.signInGithub:hover{
+    background-color: #2b2b2b;
+}
+
 .signIn a{
     text-decoration: none;
     color: aliceblue;
     padding: 10px;
 }
 
-.authoriseDiv{
-    display: flex;
-    justify-content: space-around;
+.signInGoogle{
+    background-color: #cc5f5f;
 }
+
+.signInGithub{
+    background-color: #282727;
+}
+

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clickChange, commentChange } from 'entites/comments/commentsSlice';
 import { RootState } from 'entites/store';
 
- const TaskItem: React.FC<TaskItemPropsI> = ({i}) => {
+ const TaskItem: React.FC<TaskItemPropsI> = ({item}) => {
   // const [isClicked, setIsClicked] = useState<boolean>(false);
   
   // const onCommentShow=()=>{
@@ -19,7 +19,7 @@ import { RootState } from 'entites/store';
   
   const handleClick = () =>{
     dispatch(clickChange(true))
-    dispatch(commentChange(i.comments))
+    dispatch(commentChange(item.comments))
   }
   
   
@@ -27,7 +27,7 @@ import { RootState } from 'entites/store';
     <ul>
           <li>
             <div className={styles.taskName}>
-              {i.name}
+              {item.name}
               <button className={styles.bbutton}>
                 <FaPen />
               </button>
