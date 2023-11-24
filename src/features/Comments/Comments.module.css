@@ -8,8 +8,9 @@
   left: 0;
   right: 0;
   width: 1200px;
-  background-color: #323940;
-
+  background-color: #16181b;
+  z-index: 2;
+  min-height: 500px;
 }
 
 .commentsList {
@@ -28,4 +29,9 @@
   margin-left: 0px;
   border-bottom: 2px solid #282E33;
   padding: 20px;
+}
+
+.commentsTab h2{
+  text-align: center;
+  margin-top: 200px;
 }

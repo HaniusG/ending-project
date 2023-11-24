@@ -1,22 +1,31 @@
-.listGroup{
-    display: flex;
+.listGroup {
+  display: flex;
 }
 
-.addList{
-    width: 150px;
-    height: 100px;
-    margin: 20px;
-    border-radius: 15px;
-    border: none;
-    background-color: #8a949e;
-    color: aliceblue;
-    cursor: pointer;
+.addList {
+  width: 150px;
+  height: 100px;
+  margin: 20px;
+  border-radius: 15px;
+  border: none;
+  background-color: #8a949e;
+  color: aliceblue;
+  cursor: pointer;
 }
 
-.addList:hover{
-    background-color: #8d99a7;
+.addList:hover {
+  background-color: #8d99a7;
 }
 
-.appContainer{
-    display: flex;
+.appContainer {
+  display: flex;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the transparency as needed */
 }

@@ -7,7 +7,7 @@ import TaskItem from "features/TaskItem";
 
 
 
-const Task: React.FC<TaskPropsI> = ({item, handleCommentShow}) => {
+const Task: React.FC<TaskPropsI> = ({item}) => {
   
   
   return (
@@ -20,7 +20,7 @@ const Task: React.FC<TaskPropsI> = ({item, handleCommentShow}) => {
         </button>
       </div>
       {item.tasks.map((i) => 
-          <TaskItem i={i} key={i.id} handleCommentShow={handleCommentShow}/>
+          <TaskItem i={i} key={i.id} />
         )
       }
       <div className={styles.taskBottom}>

@@ -3,15 +3,25 @@ import styles from './TaskItem.module.css'
 import { FaPen, FaAlignLeft, FaComment, } from "react-icons/fa6";
 import Comments from 'features/Comments';
 import { TaskItemPropsI } from './TaskItem.interface';
+import { useDispatch, useSelector } from 'react-redux'
+import { clickChange, commentChange } from 'entites/comments/commentsSlice';
+import { RootState } from 'entites/store';
 
- const TaskItem: React.FC<TaskItemPropsI> = ({i, handleCommentShow}) => {
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+ const TaskItem: React.FC<TaskItemPropsI> = ({i}) => {
+  // const [isClicked, setIsClicked] = useState<boolean>(false);
   
-  const onCommentShow=()=>{
-    setIsClicked(true)
-    handleCommentShow(i.comments, isClicked)
+  // const onCommentShow=()=>{
+  //   setIsClicked(true)
+  //   handleCommentShow(i.comments, isClicked)
+  // }
+  const dispatch = useDispatch();
+ 
+  
+  const handleClick = () =>{
+    dispatch(clickChange(true))
+    dispatch(commentChange(i.comments))
   }
-    
+  
   
   return (
     <ul>
@@ -26,7 +36,7 @@ import { TaskItemPropsI } from './TaskItem.interface';
             <button className={styles.bbutton}>
               <FaAlignLeft />
             </button>
-            <button className={styles.bbutton} onClick={onCommentShow}>
+            <button className={styles.bbutton} onClick={handleClick}>
               <FaComment />
             </button>
           

@@ -33,7 +33,6 @@ export interface TaskProps {
 
 export interface TaskGroupProps {
   tasks: TaskProps[];
-  handleCommentShow: (comments: CommentProps[], isClicked: boolean)=>void;
   comments?: CommentProps[];
   isClicked?: boolean;
 }

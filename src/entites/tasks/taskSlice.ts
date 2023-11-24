@@ -6,7 +6,7 @@ interface initialStateTasks{
 }
 
 const initialState: initialStateTasks= {
-    tasks : [
+    tasks :[
         {
           id: 1,
           taskState: "Backlog",

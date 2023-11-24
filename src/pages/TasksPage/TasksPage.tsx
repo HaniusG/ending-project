@@ -1,56 +1,46 @@
 import React, {useState, useEffect, useRef} from "react";
 import TaskGroup from "widgets/TaskGroup/TaskGroup";
+import { useDispatch, useSelector } from 'react-redux';
 import styles from "./TaskPage.module.css";
 import { TaskGroupProps } from "./TaksPage.interface";
 import Comments from "features/Comments";
 import { log } from "console";
-
-
-const TaskPage: React.FC<TaskGroupProps> = ({
-  tasks,
-  handleCommentShow,
-  comments,
-  isClicked
-}) => {
-
-
-  const [isOpen, setIsOpen] = useState(comments?.length!==0)
-console.log(isOpen);
-
-  
-  const modalRef = useRef<HTMLDivElement>(null)
+import { RootState } from "entites/store";
+import Modal from "features/Modal";
 
 
 
 
-  const closeModal = (event: MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {      
-      setIsOpen(false)
-    }
-  }
+const TaskPage: React.FC = ({}) => {
+
+  const tasks = useSelector((state: RootState)=>{
+    return state.tasks.tasks
+  })
+
+  const comments = useSelector((state: RootState)=>{
+    return state.comments.comments
+  })
+
+  const isClicked = useSelector((state: RootState)=>{
+    return state.comments.isClicked
+  })
 
 
-  useEffect(() => {
-    document.addEventListener('click', closeModal);
 
-    return () => {
-      document.removeEventListener('click', closeModal);
-    }
-  },[])
-
-
+  console.log(comments);
   
   return (
     <div>
       <div className={styles.listGroup}>
-        <TaskGroup tasks={tasks} handleCommentShow={handleCommentShow} />
+        <TaskGroup tasks={tasks} />
         <button className={styles.addList}>+ Add another list</button>
         {comments ? (
-          <div ref={modalRef}>
-            <Comments comments={comments} />
+          <div >
+            <Modal><Comments comments={comments} /></Modal>
           </div>
         ) : null}
       </div>
+      {isClicked ? <div className={styles.overlay}></div>: null}
     </div>
   );
 };
