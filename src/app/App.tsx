@@ -16,9 +16,7 @@ const BoardsPage = lazy(() => import("pages/BoardsPage"));
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [comments, setComments] = useState<CommentProps[]>();
-  const [isClicked, setIsClicked] = useState<boolean>(false);
-
+ 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -30,7 +28,8 @@ const App: React.FC = () => {
   const handleSignOut = () => {
     signOut(auth).catch((error) => console.log(error));
   };
-
+  console.log(user);
+  
  
 
   return (

@@ -63,3 +63,16 @@
     display: flex;
     justify-content: space-around;
 }
+
+
+.haveAnAcc a{
+  margin-left: 8px;
+  color: #1877F2;
+  text-decoration: none;
+}
+
+.haveAnAcc{
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+}
