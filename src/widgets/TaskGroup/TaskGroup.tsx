@@ -3,15 +3,21 @@ import styles from './TaskGroup.module.css'
 import { TaskGroupProps, TaskItemProps, TaskProps, } from 'pages/TasksPage/TaksPage.interface'
 import Task from "features/Task";
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { useSelector } from 'react-redux';
+import { RootState } from 'entites/store';
 
 
-const TaskGroup: React.FC<TaskGroupProps> = ({tasks}) => {
+const TaskGroup: React.FC = ({}) => {
+
+  const tasks = useSelector((state: RootState) => {
+    return state.tasks.tasks;
+  });
 
   const [columns, setColumns] = useState<TaskProps[]>(tasks);
   
  
   const onDragEnd = (result: any) => {
-    const { source, destination, draggableId } = result;
+    const { source, destination} = result;
     
     if (!destination) {
       return;

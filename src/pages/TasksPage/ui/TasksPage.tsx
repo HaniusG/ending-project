@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import TaskGroup from "widgets/TaskGroup/TaskGroup";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styles from "./TaskPage.module.css";
-import { TaskGroupProps } from "../TaksPage.interface";
 import Comments from "features/Comments";
-import { log } from "console";
 import { RootState } from "entites/store";
 import Modal from "features/Modal";
 
@@ -21,12 +19,11 @@ const TaskPage: React.FC = () => {
     return state.comments.isClicked;
   });
 
-  console.log(comments);
 
   return (
     <div>
       <div className={styles.listGroup}>
-        <TaskGroup tasks={tasks} />
+        <TaskGroup/>
         <button className={styles.addList}>+ Add another list</button>
         {comments ? (
           <div>
