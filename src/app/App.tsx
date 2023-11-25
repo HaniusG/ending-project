@@ -7,6 +7,10 @@ import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import Header from "widgets/Header/Header";
 import SideNavBar from "widgets/SideNavBar/ui/SideNavBar";
 import { CommentProps } from "pages/TasksPage/TaksPage.interface";
+import { RootState } from "entites/store";
+import { useSelector } from "react-redux";
+import { setLogin } from "entites/user/userSlice";
+import { useDispatch } from "react-redux";
 
 const LoginPage = lazy(() => import("pages/LoginPage"));
 const RegisterPage = lazy(() => import("pages/RegisterPage"));
@@ -15,6 +19,13 @@ const TasksPage = lazy(() => import("pages/TasksPage"));
 const BoardsPage = lazy(() => import("pages/BoardsPage"));
 
 const App: React.FC = () => {
+
+  const dispatch = useDispatch()
+  
+  const isLoggedIn = useSelector((state: RootState) => {
+    return state.user.isLoggedIn;
+  });
+
   const [user, setUser] = useState<User | null>(null);
  
   useEffect(() => {
@@ -27,6 +38,7 @@ const App: React.FC = () => {
 
   const handleSignOut = () => {
     signOut(auth).catch((error) => console.log(error));
+    dispatch(setLogin(false))
   };
   console.log(user);
   
@@ -34,9 +46,9 @@ const App: React.FC = () => {
 
   return (
     <div className="app dark">
-      {user ? <Header user={user} handleSignOut={handleSignOut} /> : null}
+      {isLoggedIn ? <Header user={user} handleSignOut={handleSignOut} /> : null}
       <div style={{ display: "flex" }}>
-        {user ? <SideNavBar /> : null}
+        {isLoggedIn ? <SideNavBar /> : null}
         <Suspense fallback={"Loading"}>
           <Routes>
             <Route path="/" element={<LoginPage />} />

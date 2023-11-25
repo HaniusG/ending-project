@@ -4,8 +4,12 @@ import { GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from 'firebas
 import styles from './SignIn.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle  } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { setLogin } from 'entites/user/userSlice'
 
 const SignInWithGoogle: FC = () => {
+
+  const dispatch = useDispatch();
   const navigate = useNavigate()
 
     const signInWithGoogle = async () => {
@@ -13,6 +17,7 @@ const SignInWithGoogle: FC = () => {
         try{
           await signInWithPopup(auth, provider);
           await navigate('/boards')
+          await dispatch(setLogin(true));
         }catch(err){
           console.log(err);
         }

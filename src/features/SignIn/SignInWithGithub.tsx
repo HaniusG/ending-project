@@ -7,11 +7,14 @@ import {
 import styles from "./SignIn.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import {  FaGithub } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { setLogin } from "entites/user/userSlice";
 
 
 
 const SignInWithGitHub: FC = () => {
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const signInWithGitHub = async () => {
@@ -19,6 +22,7 @@ const SignInWithGitHub: FC = () => {
     try {
       await signInWithPopup(auth, provider);
       await navigate('/boards');
+      await dispatch(setLogin(true));
     } catch (err) {
       console.log(err);
     }

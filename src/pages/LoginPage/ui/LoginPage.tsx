@@ -6,9 +6,13 @@ import SignInWithGitHub from "features/SignIn/SignInWithGithub";
 import {auth} from '../../../firebase'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
+import { setLogin } from "entites/user/userSlice";
+import { useDispatch } from "react-redux";
 const LoginPage: React.FC = () => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -18,7 +22,9 @@ const LoginPage: React.FC = () => {
     e.preventDefault();
     try{
       await signInWithEmailAndPassword(auth, email, password);
-      await navigate('/boards')
+      await navigate('/boards');
+      await dispatch(setLogin(true));
+    
     await((userCredential: any)=>{console.log(userCredential)});
     }catch(err){
       console.log(err);

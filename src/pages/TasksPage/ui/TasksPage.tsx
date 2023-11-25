@@ -8,7 +8,7 @@ import { log } from "console";
 import { RootState } from "entites/store";
 import Modal from "features/Modal";
 
-const TaskPage: React.FC = ({}) => {
+const TaskPage: React.FC = () => {
   const tasks = useSelector((state: RootState) => {
     return state.tasks.tasks;
   });
