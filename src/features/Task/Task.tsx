@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaPen, FaAlignLeft, FaComment, FaCopy } from "react-icons/fa6";
-import styles from './Task.module.css'
+import styles from "./Task.module.css";
 import { TaskPropsI } from "./Task.interface";
 import TaskItem from "features/TaskItem";
 import { Draggable } from "react-beautiful-dnd";
+import { addItem } from "entites/tasks/taskSlice";
+import { useDispatch } from "react-redux";
+
+const Task: React.FC<TaskPropsI> = ({ task }) => {
+  const [newItemName, setNewItemName] = useState("");
+  const [addNewClicked, setAddNewClicked] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const handleAddClick = () => {
+    setAddNewClicked(true);
+    // dispatch(addItem(task.id))
+  };
 
 
+  const onInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setNewItemName(e.target.value)
+  }
 
-
-const Task: React.FC<TaskPropsI> = ({task}) => {
-  
-  
+  const onAddNewClick = () => {
+    if(newItemName===""){
+      setAddNewClicked(false)
+    }else{
+       dispatch(addItem({parentId: task.id, name: newItemName}))
+    }
+  } 
   return (
-
     <div className={styles.taskGroup}>
       <div className={styles.taskName}>
         <h4>{task.taskState}</h4>
@@ -20,36 +38,43 @@ const Task: React.FC<TaskPropsI> = ({task}) => {
           <p>. . .</p>
         </button>
       </div>
-      {task.tasks.map((item, index) => 
-      {
-        return(
-          <Draggable key={item.id} draggableId={item.id.toString()} index={index}>
-            {
-              (provided)=>{
-                return(
-                  <div
+      {task.tasks.map((item, index) => {
+        return (
+          <Draggable
+            key={item.id}
+            draggableId={item.id.toString()}
+            index={index}
+          >
+            {(provided) => {
+              return (
+                <div
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
-                    ref={provided.innerRef}
-                  >
-                    <TaskItem item={item} parentId={task.id} key={item.id}/>
-
-                  </div>
-                  
-                )
-              }
-            }
+                  ref={provided.innerRef}
+                >
+                  <TaskItem item={item} parentId={task.id} key={item.id} />
+                </div>
+              );
+            }}
           </Draggable>
-        )
-      }
-          
-        )
-      }
+        );
+      })}
       <div className={styles.taskBottom}>
-        <button className={styles.addButton}>+ Add a card</button>
-        <button className={styles.copyButton}>
-          <FaCopy />
-        </button>
+        {!addNewClicked ? (
+          <div className={styles.taskBottomDiv}>
+            <button className={styles.addButton} onClick={handleAddClick}>
+              + Add a card
+            </button>
+            <button className={styles.copyButton}>
+              <FaCopy />
+            </button>
+          </div>
+        ) : (
+          <div className={styles.addNew}>
+            <input type="text" value={newItemName} onChange={onInputChange }/>
+            <button onClick={onAddNewClick}>Add new card</button>
+          </div>
+        )}
       </div>
     </div>
   );

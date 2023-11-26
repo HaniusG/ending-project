@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./TaskItem.module.css";
 import { FaPen, FaAlignLeft, FaComment } from "react-icons/fa6";
 import { TaskItemPropsI } from "./TaskItem.interface";
@@ -16,7 +16,6 @@ const TaskItem: React.FC<TaskItemPropsI> = ({ item, parentId }) => {
     return state.tasks.tasks;
   });
 
-  
   
   const dispatch = useDispatch();
 

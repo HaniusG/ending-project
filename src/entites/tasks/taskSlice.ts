@@ -8,7 +8,7 @@ interface initialStateTasks {
 
 interface changeTaskINProps {
   parentId: number;
-  selfId: number;
+  selfId?: number;
   name: string;
 }
 
@@ -153,11 +153,31 @@ export const tasksSlice = createSlice({
     },
     changeDragDropItems: (state, action: PayloadAction<TaskProps[]>) => {
       state.tasks = action.payload;
+    },
+    addItem: (state,  action: PayloadAction<changeTaskINProps>) =>{
+      const task = state.tasks.find(task=> task.id=action.payload.parentId)
+      const ids:number[] = [];
+      state.tasks.map((task)=>task.tasks.map(object => {
+        ids.push(object.id) 
+      }))
+     
+      const max = ids ? Math.max(...ids): 0;
+
+
+      task?.tasks.push( {
+        id: max+1,
+        name: action.payload.name,
+        comments: [
+         
+        ],
+      },)
     }
+
   },
+  
 });
 ;
 
-export const {changeTaskItemName, changeDragDropItems} = tasksSlice.actions;
+export const {changeTaskItemName, changeDragDropItems, addItem} = tasksSlice.actions;
 
 export default tasksSlice.reducer;
