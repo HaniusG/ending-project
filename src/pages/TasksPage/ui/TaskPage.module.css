@@ -58,8 +58,7 @@
   color: white;
   font-size: 15px;
   display: block;
-  margin: 10px;
-  width: 88%;
+  margin: 10px 10px 0px 10px;
 }
 .addNewList button{
   background-color: #5e96e5;
