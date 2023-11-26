@@ -8,19 +8,19 @@ import { Draggable } from "react-beautiful-dnd";
 
 
 
-const Task: React.FC<TaskPropsI> = ({item}) => {
+const Task: React.FC<TaskPropsI> = ({task}) => {
   
   
   return (
 
     <div className={styles.taskGroup}>
       <div className={styles.taskName}>
-        <h4>{item.taskState}</h4>
+        <h4>{task.taskState}</h4>
         <button className={styles.bbutton}>
           <p>. . .</p>
         </button>
       </div>
-      {item.tasks.map((item, index) => 
+      {task.tasks.map((item, index) => 
       {
         return(
           <Draggable key={item.id} draggableId={item.id.toString()} index={index}>
@@ -32,7 +32,7 @@ const Task: React.FC<TaskPropsI> = ({item}) => {
                   {...provided.dragHandleProps}
                     ref={provided.innerRef}
                   >
-                    <TaskItem item={item} key={item.id} />
+                    <TaskItem item={item} parentId={task.id} key={item.id}/>
 
                   </div>
                   

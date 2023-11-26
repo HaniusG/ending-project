@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './TaskGroup.module.css'
 import { TaskGroupProps, TaskItemProps, TaskProps, } from 'pages/TasksPage/TaksPage.interface'
 import Task from "features/Task";
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { useSelector } from 'react-redux';
 import { RootState } from 'entites/store';
+import { changeDragDropItems } from 'entites/tasks/taskSlice';
+import { useDispatch } from 'react-redux';
 
 
 const TaskGroup: React.FC = ({}) => {
+  const dispatch = useDispatch();
 
   const tasks = useSelector((state: RootState) => {
     return state.tasks.tasks;
   });
 
-  const [columns, setColumns] = useState<TaskProps[]>(tasks);
   
  
   const onDragEnd = (result: any) => {
@@ -27,8 +29,8 @@ const TaskGroup: React.FC = ({}) => {
       return;
     }
 
-    const sourceColumn: TaskProps= columns.find((item) => item.id.toString() === source.droppableId) as TaskProps;
-    const destinationColumn: TaskProps = columns.find((item) => item.id.toString() === destination.droppableId) as TaskProps;
+    const sourceColumn: TaskProps= tasks.find((item) => item.id.toString() === source.droppableId) as TaskProps;
+    const destinationColumn: TaskProps = tasks.find((item) => item.id.toString() === destination.droppableId) as TaskProps;
     
     const newSourceCards: TaskItemProps[] = Array.from(sourceColumn?.tasks as TaskItemProps[])
     const [removedCard] = newSourceCards.splice(source.index, 1);
@@ -41,7 +43,7 @@ const TaskGroup: React.FC = ({}) => {
         tasks: newSourceCards,
       };
 
-      setColumns(columns.map(column => column.id === newColumn.id ? newColumn : column))
+      dispatch(changeDragDropItems(tasks.map(column => column.id === newColumn.id ? newColumn : column)))
     } else {
       const newDestinationCards: TaskItemProps[] = Array.from(destinationColumn.tasks);
       newDestinationCards.splice(destination.index, 0, removedCard);
@@ -58,16 +60,17 @@ const TaskGroup: React.FC = ({}) => {
       }
       
 
-      setColumns(columns.map(column => {
+      dispatch(changeDragDropItems((tasks.map(column => {
         if (column.id=== newSourceColumn.id) return newSourceColumn;
         if (column.id === newDestinationColumn.id) return newDestinationColumn;
         return column
-      }))
+      }))))
+      
     }
   }
 
   
-  
+
   
 
 
@@ -75,9 +78,9 @@ const TaskGroup: React.FC = ({}) => {
     <DragDropContext onDragEnd={onDragEnd}>
        <div className={styles.taskGroup}>
         {
-        columns.map((item, index) => {
+        tasks.map((task, index) => {
           return (
-            <Droppable droppableId={item.id.toString()} key={item.id}>
+            <Droppable droppableId={task.id.toString()} key={task.id}>
               {
                 (provided) =>{
                   return (
@@ -85,7 +88,7 @@ const TaskGroup: React.FC = ({}) => {
                     {...provided.droppableProps}
                       ref={provided.innerRef}
                     >
-                      <Task item={item} key={item.id}/>
+                      <Task task={task} key={task.id}/>
                     </div>
                   )
                 }

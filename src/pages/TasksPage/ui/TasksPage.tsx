@@ -7,9 +7,7 @@ import { RootState } from "entites/store";
 import Modal from "features/Modal";
 
 const TaskPage: React.FC = () => {
-  const tasks = useSelector((state: RootState) => {
-    return state.tasks.tasks;
-  });
+ 
 
   const comments = useSelector((state: RootState) => {
     return state.comments.comments;

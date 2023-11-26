@@ -16,7 +16,14 @@
     background-color: #282F27;
 }
 
-
+.taskName input{
+    margin-top: 5px;
+    background-color: #282E33;
+    border: none;
+    color: white;
+    padding-left: 10px;
+    border-radius: 5px;
+}
 
 
 
