@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './TaskGroup.module.css'
-import { TaskGroupProps, TaskItemProps, TaskProps, } from 'pages/TasksPage/TaksPage.interface'
+import { TaskItemProps, TaskProps, } from 'pages/TasksPage/TaksPage.interface'
 import Task from "features/Task";
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { useSelector } from 'react-redux';
@@ -15,6 +15,7 @@ const TaskGroup: React.FC = ({}) => {
   const tasks = useSelector((state: RootState) => {
     return state.tasks.tasks;
   });
+
 
   
  

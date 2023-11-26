@@ -155,13 +155,17 @@ export const tasksSlice = createSlice({
       state.tasks = action.payload;
     },
     addItem: (state,  action: PayloadAction<changeTaskINProps>) =>{
-      const task = state.tasks.find(task=> task.id=action.payload.parentId)
+      const task = state.tasks.find(task=> task.id===action.payload.parentId)
+    
       const ids:number[] = [];
-      state.tasks.map((task)=>task.tasks.map(object => {
-        ids.push(object.id) 
+      
+      state.tasks.map((task)=>task.tasks.map((object) => {
+        return(ids.push(object.id)) 
       }))
+      
+            
      
-      const max = ids ? Math.max(...ids): 0;
+      const max = ids ? Math.max(...ids): 1000;
 
 
       task?.tasks.push( {
@@ -170,14 +174,30 @@ export const tasksSlice = createSlice({
         comments: [
          
         ],
+      },
+      
+     
+      )
+   
+    },
+    addTask:(state, action: PayloadAction<string>)=>{
+      const ids:number[] =[]
+      state.tasks.map(task=>{ids.push(task.id)})
+
+      const max = ids ? Math.max(...ids): 0;
+      state.tasks.push( {
+        id: max+1,
+        taskState: action.payload,
+        tasks: [
+        
+        ],
       },)
     }
-
   },
   
 });
 ;
 
-export const {changeTaskItemName, changeDragDropItems, addItem} = tasksSlice.actions;
+export const {changeTaskItemName, changeDragDropItems, addItem, addTask} = tasksSlice.actions;
 
 export default tasksSlice.reducer;

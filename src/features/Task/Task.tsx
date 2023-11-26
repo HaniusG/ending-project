@@ -15,7 +15,6 @@ const Task: React.FC<TaskPropsI> = ({ task }) => {
 
   const handleAddClick = () => {
     setAddNewClicked(true);
-    // dispatch(addItem(task.id))
   };
 
 
@@ -28,6 +27,7 @@ const Task: React.FC<TaskPropsI> = ({ task }) => {
       setAddNewClicked(false)
     }else{
        dispatch(addItem({parentId: task.id, name: newItemName}))
+       setNewItemName('')
     }
   } 
   return (
@@ -72,7 +72,7 @@ const Task: React.FC<TaskPropsI> = ({ task }) => {
         ) : (
           <div className={styles.addNew}>
             <input type="text" value={newItemName} onChange={onInputChange }/>
-            <button onClick={onAddNewClick}>Add new card</button>
+            <button onClick={onAddNewClick}>{newItemName!=="" ? "Add new card": 'Close'}</button>
           </div>
         )}
       </div>
