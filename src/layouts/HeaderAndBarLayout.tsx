@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
+import Header from 'widgets/Header/Header'
+import SideNavBar from 'widgets/SideNavBar'
 
-export const HeaderAndBarLayout:React.FC = () => {
+const HeaderAndBarLayout = ({children}: {children: ReactNode} )=> {
   return (
-    <>
-        
+    <>  
+        <Header/>
+        <div style={{display: 'flex'}}>
+          <SideNavBar/>
+          {children}
+        </div>
     </>
   )
 }
+
+
+export default HeaderAndBarLayout;

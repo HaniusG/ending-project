@@ -10,10 +10,12 @@ import {
   FaConnectdevelop,
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import HeaderAndBarLayout from "layouts/HeaderAndBarLayout";
 
 const BoardsPage = () => {
   return (
-    <div className={styles.boardPage}>
+    <HeaderAndBarLayout>
+       <div className={styles.boardPage}>
       <div className={styles.fullTempDiv}>
         <div className={styles.fullTempDiv}>
           <h3>
@@ -91,6 +93,8 @@ const BoardsPage = () => {
         </div>
       </div>
     </div>
+    </HeaderAndBarLayout> 
+   
   );
 };
 

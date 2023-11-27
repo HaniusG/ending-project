@@ -7,6 +7,7 @@ import { RootState } from "entites/store";
 import Modal from "features/Modal";
 import { addTask } from "entites/tasks/taskSlice";
 import { useDispatch } from "react-redux";
+import HeaderAndBarLayout from "layouts/HeaderAndBarLayout";
 
 const TaskPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const TaskPage: React.FC = () => {
     } else {
       dispatch(addTask(newTaskName));
       setNewTaskName("");
-      setAddNewClicked(false)
+      setAddNewClicked(false);
     }
   };
 
@@ -41,27 +42,38 @@ const TaskPage: React.FC = () => {
   });
 
   return (
-    <div>
-      <div className={styles.listGroup}>
-        <TaskGroup />
-        {!addNewClicked ? (
-          <button onClick={handleAddClick} className={styles.addList}>+ Add another list</button>
-        ) : (
-          <div className={styles.addNewList}>
-            <input type="text" onChange={onInputChange} placeholder="Add list name" value={newTaskName} />{" "}
-            <button onClick={onAddNewClick}>{newTaskName!=="" ? "Add new List": 'Close'}</button>
-          </div>
-        )}
-        {comments ? (
-          <div>
-            <Modal>
-              <Comments comments={comments} />
-            </Modal>
-          </div>
-        ) : null}
+    <HeaderAndBarLayout>
+      <div>
+        <div className={styles.listGroup}>
+          <TaskGroup />
+          {!addNewClicked ? (
+            <button onClick={handleAddClick} className={styles.addList}>
+              + Add another list
+            </button>
+          ) : (
+            <div className={styles.addNewList}>
+              <input
+                type="text"
+                onChange={onInputChange}
+                placeholder="Add list name"
+                value={newTaskName}
+              />{" "}
+              <button onClick={onAddNewClick}>
+                {newTaskName !== "" ? "Add new List" : "Close"}
+              </button>
+            </div>
+          )}
+          {comments ? (
+            <div>
+              <Modal>
+                <Comments comments={comments} />
+              </Modal>
+            </div>
+          ) : null}
+        </div>
+        {isClicked ? <div className={styles.overlay}></div> : null}
       </div>
-      {isClicked ? <div className={styles.overlay}></div> : null}
-    </div>
+    </HeaderAndBarLayout>
   );
 };
 

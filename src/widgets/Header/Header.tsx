@@ -2,12 +2,32 @@ import { BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { FaBell, FaQuestion, FaSearchengin, FaChevronDown, FaTrello } from "react-icons/fa6";
-import { HeaderProps } from "./Header.interface";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { RootState } from "entites/store";
 import { useSelector } from "react-redux";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { setUser } from "entites/user/userSlice";
+import { auth } from "../../firebase";
 
-const Header: React.FC<HeaderProps>= ({ handleSignOut}) => {
+const Header: React.FC= () => {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+     dispatch( setUser(currentUser));
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const handleSignOut = () => {
+    signOut(auth).catch((error) => console.log(error));
+  };
+  
+ 
+  
   const [isUserMenuOpen, setUserMenuOpen] = useState<boolean>(false)
 
   const user = useSelector((state: RootState) => state.user.profile);

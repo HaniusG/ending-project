@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "./UserPage.module.css";
-
 import { useSelector } from "react-redux";
-import { profile } from "console";
 import { RootState } from "entites/store";
+import HeaderAndBarLayout from "layouts/HeaderAndBarLayout";
 
 const UserPage: React.FC = () => {
   const user = useSelector((state: RootState) => state.user.profile);
-  
+
   return (
-    <>
+    <HeaderAndBarLayout>
+     
        <div className={styles.userProfile}>
         <div className={styles.userAvatar}>
           {user?.photoUrl ? (
@@ -53,7 +53,7 @@ const UserPage: React.FC = () => {
         
       </div>
    
-    </>
+    </HeaderAndBarLayout>
      
   );
 };

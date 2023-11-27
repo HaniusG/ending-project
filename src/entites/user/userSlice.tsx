@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase";
 
@@ -75,7 +75,11 @@ const initialState: State= {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    setUser: (state, action: PayloadAction<any>)=>{
+      state.profile = action.payload;
+  },
+  },
   extraReducers: {
     [loginWithGoogle.pending as any]: (state) => {
       state.loading = true;
@@ -103,3 +107,5 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
+
+export const {setUser} = userSlice.actions;
