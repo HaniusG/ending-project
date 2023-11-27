@@ -4,15 +4,19 @@ import styles from "./Header.module.css";
 import { FaBell, FaQuestion, FaSearchengin, FaChevronDown, FaTrello } from "react-icons/fa6";
 import { HeaderProps } from "./Header.interface";
 import React, {useState} from "react";
+import { RootState } from "entites/store";
+import { useSelector } from "react-redux";
 
-const Header: React.FC<HeaderProps>= ({user, handleSignOut}) => {
+const Header: React.FC<HeaderProps>= ({ handleSignOut}) => {
   const [isUserMenuOpen, setUserMenuOpen] = useState<boolean>(false)
 
+  const user = useSelector((state: RootState) => state.user.profile);
+  
   const toggleUserMenu = (): void => {
     setUserMenuOpen(!isUserMenuOpen);
   }
 
-  
+
   
   return (
     <header className={styles.header}>
@@ -40,10 +44,10 @@ const Header: React.FC<HeaderProps>= ({user, handleSignOut}) => {
         <div className={styles.userContainer} onClick={toggleUserMenu}>
         
         {
-            user?.photoURL ?
+            user?.photoUrl ?
               <img
               
-            src={user?.photoURL}
+            src={user?.photoUrl}
             alt="User Avatar"
             className={styles.userImage}
           />: <div>No photo</div>

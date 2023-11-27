@@ -1,13 +1,19 @@
 import React from "react";
 import styles from "./UserPage.module.css";
-import { UserPageProps } from "../UserPage.interface";
 
-const UserPage: React.FC<UserPageProps> = ({ user}) => {
+import { useSelector } from "react-redux";
+import { profile } from "console";
+import { RootState } from "entites/store";
+
+const UserPage: React.FC = () => {
+  const user = useSelector((state: RootState) => state.user.profile);
+  
   return (
-      <div className={styles.userProfile}>
+    <>
+       <div className={styles.userProfile}>
         <div className={styles.userAvatar}>
-          {user?.photoURL ? (
-            <img src={user.photoURL} alt="" />
+          {user?.photoUrl ? (
+            <img src={user.photoUrl} alt="" />
           ) : (
             <div>No image</div>
           )}
@@ -47,6 +53,8 @@ const UserPage: React.FC<UserPageProps> = ({ user}) => {
         
       </div>
    
+    </>
+     
   );
 };
 

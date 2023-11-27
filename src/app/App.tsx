@@ -9,7 +9,6 @@ import SideNavBar from "widgets/SideNavBar/ui/SideNavBar";
 import { CommentProps } from "pages/TasksPage/TaksPage.interface";
 import { RootState } from "entites/store";
 import { useSelector } from "react-redux";
-import { setLogin } from "entites/user/userSlice";
 import { useDispatch } from "react-redux";
 
 const LoginPage = lazy(() => import("pages/LoginPage"));
@@ -21,10 +20,6 @@ const BoardsPage = lazy(() => import("pages/BoardsPage"));
 const App: React.FC = () => {
 
   const dispatch = useDispatch()
-  
-  const isLoggedIn = useSelector((state: RootState) => {
-    return state.user.isLoggedIn;
-  });
 
   const [user, setUser] = useState<User | null>(null);
  
@@ -38,7 +33,6 @@ const App: React.FC = () => {
 
   const handleSignOut = () => {
     signOut(auth).catch((error) => console.log(error));
-    dispatch(setLogin(false))
   };
   console.log(user);
   
@@ -46,13 +40,13 @@ const App: React.FC = () => {
 
   return (
     <div className="app dark">
-      {isLoggedIn ? <Header user={user} handleSignOut={handleSignOut} /> : null}
+      {user ? <Header  handleSignOut={handleSignOut} /> : null}
       <div style={{ display: "flex" }}>
-        {isLoggedIn ? <SideNavBar /> : null}
+        {user ? <SideNavBar /> : null}
         <Suspense fallback={"Loading"}>
           <Routes>
             <Route path="/" element={<LoginPage />} />
-            <Route path="/user" element={<UserPage user={user} />} />
+            <Route path="/user" element={<UserPage  />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/tasks" element={<TasksPage />} />
             <Route path="/boards" element={<BoardsPage />} />
