@@ -9,7 +9,6 @@ interface User{
     photoURL: string | null;
 }
 
-
 export const loginWithGoogle = createAsyncThunk(
   "user/loginWithGoogle",
   async (_, {rejectWithValue}) => {
@@ -76,7 +75,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<any>)=>{
+    setUser: (state, action: PayloadAction<User | null>)=>{
       state.profile = action.payload;
   },
   },
