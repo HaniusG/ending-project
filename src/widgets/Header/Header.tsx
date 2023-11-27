@@ -64,10 +64,10 @@ const Header: React.FC= () => {
         <div className={styles.userContainer} onClick={toggleUserMenu}>
         
         {
-            user?.photoUrl ?
+            user?.photoURL ?
               <img
               
-            src={user?.photoUrl}
+            src={user?.photoURL}
             alt="User Avatar"
             className={styles.userImage}
           />: <div>No photo</div>

@@ -6,7 +6,7 @@ interface User{
     uid: string,
     email: string | null,
     displayName: string | null;
-    photoUrl: string | null;
+    photoURL: string | null;
 }
 
 
@@ -20,7 +20,7 @@ export const loginWithGoogle = createAsyncThunk(
             uid: result.user.uid,
             email: result.user.email,
             displayName: result.user.displayName,
-            photoUrl: result.user.photoURL
+            photoURL: result.user.photoURL
         }
 
         return userData;
@@ -45,7 +45,7 @@ export const loginWithGithub = createAsyncThunk(
             uid: result.user.uid,
             email: result.user.email,
             displayName: result.user.displayName,
-            photoUrl: result.user.photoURL
+            photoURL: result.user.photoURL
         }
 
         return userData;

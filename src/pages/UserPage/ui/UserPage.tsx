@@ -12,8 +12,8 @@ const UserPage: React.FC = () => {
      
        <div className={styles.userProfile}>
         <div className={styles.userAvatar}>
-          {user?.photoUrl ? (
-            <img src={user.photoUrl} alt="" />
+          {user?.photoURL ? (
+            <img src={user.photoURL} alt="" />
           ) : (
             <div>No image</div>
           )}
