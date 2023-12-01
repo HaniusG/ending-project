@@ -42,7 +42,6 @@ export const createBoard = createAsyncThunk(
       taskState,
       tasks,
     });
-
     return { id: docRef.id, taskState, tasks };
   }
 );

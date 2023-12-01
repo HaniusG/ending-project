@@ -11,42 +11,18 @@ import {
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import HeaderAndBarLayout from "layouts/HeaderAndBarLayout";
+import { useSelector } from "react-redux";
+import { RootState } from "entites/store";
+
 
 const BoardsPage = () => {
+  const user = useSelector((state: RootState) => state.user.profile);
+
   return (
     <HeaderAndBarLayout>
        <div className={styles.boardPage}>
-      <div className={styles.fullTempDiv}>
-        <div className={styles.fullTempDiv}>
-          <h3>
-            <FaClock /> Recently viewed
-          </h3>
-          <div className={styles.fullTemplates}>
-            <TemplatePreviews
-              backgroundColor="#5F287B"
-              text="Project Management"
-              isTemplate={true}
-            />
-            <Link to='/tasks'>
-            <TemplatePreviews
-              backgroundColor="#128EA2"
-              text="React.Js"
-              isTemplate={false}
-            />
-            </Link>
-          
-            <TemplatePreviews
-              backgroundColor="#76736B"
-              text="Ha"
-              isTemplate={false}
-            />
-            <TemplatePreviews
-              backgroundColor="#AE4D7B"
-              text="My trello Board"
-              isTemplate={false}
-            />
-          </div>
-        </div>
+    
+        
         <div className={styles.fullTempDiv}>
           <h2>Your workspaces</h2>
 
@@ -54,14 +30,14 @@ const BoardsPage = () => {
             <div className={styles.workspaceDescript}>
               <div className={styles.userInfo}>
                 <img
-                  src="https://media.istockphoto.com/id/1149504274/photo/portrait-of-a-taiwanese-man.webp?s=612x612&w=is&k=20&c=V303PB-_s32NcD47Acei71NNmsMJV9_vaXT865V7Wog="
+                  src={user && user.photoURL ? user?.photoURL: ''}
                   alt=""
                 />
-                <h4>Your Workspace</h4>
+                <h4>{user?.displayName+"'s"} Workspace</h4>
               </div>
               <div>
                 <button>
-                  <FaBarsProgress /> Board
+                  <FaBarsProgress/> Board
                 </button>
                 <button>
                   <FaEye /> Views
@@ -79,7 +55,6 @@ const BoardsPage = () => {
             </div>
           </div>
           <div className={styles.fullTemplates}>
-
            <Link to='/tasks'>
             <TemplatePreviews
               backgroundColor="#128EA2"
@@ -92,7 +67,6 @@ const BoardsPage = () => {
           </div>
         </div>
       </div>
-    </div>
     </HeaderAndBarLayout> 
    
   );
