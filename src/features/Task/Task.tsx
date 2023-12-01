@@ -6,11 +6,20 @@ import TaskItem from "features/TaskItem";
 import { Draggable } from "react-beautiful-dnd";
 import { addItem } from "entites/tasks/taskSlice";
 import { useDispatch } from "react-redux";
+import { addTaskGroup } from "entites/board/boardSlice";
+import { useAppDispatch } from "hooks/useAppDispatch";
+import { useSelector } from "react-redux";
+import { RootState } from "entites/store";
 
 const Task: React.FC<TaskPropsI> = ({ task }) => {
   const [newItemName, setNewItemName] = useState("");
   const [addNewClicked, setAddNewClicked] = useState(false);
 
+  const board1 = useSelector((state: RootState) => {
+    return  state.board.board;
+   });
+ 
+  const dispatchA = useAppDispatch();
   const dispatch = useDispatch();
 
   const handleAddClick = () => {
@@ -26,7 +35,15 @@ const Task: React.FC<TaskPropsI> = ({ task }) => {
     if(newItemName===""){
       setAddNewClicked(false)
     }else{
-       dispatch(addItem({parentId: task.id, name: newItemName}))
+      dispatchA(
+        addTaskGroup({
+          id: board1[0].id,
+          postData: newItemName,
+          updateCase: 'addT',
+          parentId: task.id,
+          selfId: 0,
+    })
+      )
        setNewItemName('')
     }
   } 
@@ -40,23 +57,24 @@ const Task: React.FC<TaskPropsI> = ({ task }) => {
       </div>
       {task.tasks.map((item, index) => {
         return (
-          <Draggable
-            key={item.id}
-            draggableId={item.id.toString()}
-            index={index}
-          >
-            {(provided) => {
-              return (
-                <div
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                  ref={provided.innerRef}
-                >
-                  <TaskItem item={item} parentId={task.id} key={item.id} />
-                </div>
-              );
-            }}
-          </Draggable>
+          <TaskItem item={item} parentId={task.id} key={item.id} />
+          // <Draggable
+          //   key={item.id}
+          //   draggableId={item.id.toString()}
+          //   index={index}
+          // >
+          //   {(provided) => {
+          //     return (
+          //       <div
+          //         {...provided.draggableProps}
+          //         {...provided.dragHandleProps}
+          //         ref={provided.innerRef}
+          //       >
+          //         <TaskItem item={item} parentId={task.id} key={item.id} />
+          //       </div>
+          //     );
+          //   }}
+          // </Draggable>
         );
       })}
       <div className={styles.taskBottom}>

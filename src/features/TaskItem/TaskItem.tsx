@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { clickChange, commentChange } from "entites/comments/commentsSlice";
 import { RootState } from "entites/store";
 import { changeTaskItemName } from "entites/tasks/taskSlice";
+import { useAppDispatch } from "hooks/useAppDispatch";
+import { addTaskGroup } from "entites/board/boardSlice";
 
 const TaskItem: React.FC<TaskItemPropsI> = ({ item, parentId }) => {
-  
   const [isEditting, setEditting] = useState(false)
   const [itemName, setItemName] =useState(item.name)
 
@@ -16,7 +17,11 @@ const TaskItem: React.FC<TaskItemPropsI> = ({ item, parentId }) => {
     return state.tasks.tasks;
   });
 
-  
+  const board1 = useSelector((state: RootState) => {
+    return  state.board.board;
+   });
+
+   const dispatchA = useAppDispatch();
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -26,11 +31,19 @@ const TaskItem: React.FC<TaskItemPropsI> = ({ item, parentId }) => {
 
   const handleTaskItemChange = () => {
     setEditting(!isEditting)
+    
   };
 
   const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setItemName(e.target.value)
-    dispatch(changeTaskItemName({ parentId, selfId: item.id, name: e.target.value }));
+    dispatchA(
+      addTaskGroup({
+        id: board1[0].id,
+        postData: e.target.value,
+        updateCase: 'addTI',
+        parentId: parentId,
+        selfId: item.id,
+  }))
 
   }
 

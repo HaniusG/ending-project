@@ -133,6 +133,8 @@ const initialState: initialStateTasks = {
   ],
 };
 
+
+
 export const tasksSlice = createSlice({
   name: "tasks",
   initialState,
@@ -180,6 +182,8 @@ export const tasksSlice = createSlice({
       )
    
     },
+
+    
     addTask:(state, action: PayloadAction<string>)=>{
       const ids:number[] =[]
       state.tasks.map(task=>{ids.push(task.id)})

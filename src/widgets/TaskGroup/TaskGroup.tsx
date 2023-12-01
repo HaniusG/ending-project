@@ -7,16 +7,34 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'entites/store';
 import { changeDragDropItems } from 'entites/tasks/taskSlice';
 import { useDispatch } from 'react-redux';
+import { fetchBoard } from 'entites/board/boardSlice';
+import { useAppDispatch } from 'hooks/useAppDispatch';
 
 
 const TaskGroup: React.FC = ({}) => {
   const dispatch = useDispatch();
 
+  const appDispatch = useAppDispatch()
+
   const tasks = useSelector((state: RootState) => {
     return state.tasks.tasks;
   });
 
+  const board1 = useSelector((state: RootState) => {
+    
+   return  state.board.board[0];
+  });
 
+  
+  
+
+ 
+  
+  
+  useEffect(() => {
+    appDispatch(fetchBoard());
+  }, [appDispatch]);
+  
   
  
   const onDragEnd = (result: any) => {
@@ -74,34 +92,48 @@ const TaskGroup: React.FC = ({}) => {
 
   
 
-
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-       <div className={styles.taskGroup}>
-        {
-        tasks.map((task, index) => {
-          return (
-            <Droppable droppableId={task.id.toString()} key={task.id}>
-              {
-                (provided) =>{
-                  return (
-                    <div
-                    {...provided.droppableProps}
-                      ref={provided.innerRef}
-                    >
-                      <Task task={task} key={task.id}/>
-                    </div>
-                  )
-                }
-              }
-            </Droppable>
-          )
-        }
+    <>
+    {
+      board1 && board1.board1 ? 
+    board1.board1.map((task: TaskProps) => {
+      return (
+        <div>
+        
+          <Task task={task} key={task.id} />
+        </div>
+      );
+    })
+
+    : null}
+    </>
+    
+    // <DragDropContext onDragEnd={onDragEnd}>
+    //    <div className={styles.taskGroup}>
+    //     {
+    //     tasks.map((task, index) => {
+    //       return (
+    //         <Droppable droppableId={task.id.toString()} key={task.id}>
+    //           {
+    //             (provided) =>{
+    //               return (
+    //                 <div
+    //                 {...provided.droppableProps}
+    //                   ref={provided.innerRef}
+    //                 >
+    //                   <Task task={task} key={task.id}/>
+    //                 </div>
+    //               )
+    //             }
+    //           }
+    //         </Droppable>
+    //       )
+    //     }
           
-        )
-      }
-    </div>
-    </DragDropContext>
+    //     )
+    //   }
+    // </div>
+    // </DragDropContext>
    
   )
 }

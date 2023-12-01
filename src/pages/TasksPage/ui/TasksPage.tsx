@@ -8,8 +8,23 @@ import Modal from "features/Modal";
 import { addTask } from "entites/tasks/taskSlice";
 import { useDispatch } from "react-redux";
 import HeaderAndBarLayout from "layouts/HeaderAndBarLayout";
+import { addTaskGroup, createBoard } from "entites/board/boardSlice";
+import { useAppDispatch } from "hooks/useAppDispatch";
+import { TaskItemProps, TaskProps } from "../TaksPage.interface";
+import { log } from "console";
+
 
 const TaskPage: React.FC = () => {
+
+  const board1 = useSelector((state: RootState) => {
+   return  state.board.board;
+  });
+
+
+  
+
+  const dispatchA = useAppDispatch();
+  
   const dispatch = useDispatch();
 
   const [newTaskName, setNewTaskName] = useState("");
@@ -27,7 +42,18 @@ const TaskPage: React.FC = () => {
     if (newTaskName === "") {
       setAddNewClicked(false);
     } else {
-      dispatch(addTask(newTaskName));
+      dispatchA(
+        addTaskGroup({
+          id: board1[0].id,
+          postData: {
+            taskState: newTaskName,
+            tasks: []
+          },
+          updateCase: 'addTG',
+          parentId: 0,
+          selfId: 0,
+    })
+      )
       setNewTaskName("");
       setAddNewClicked(false);
     }
@@ -40,6 +66,11 @@ const TaskPage: React.FC = () => {
   const isClicked = useSelector((state: RootState) => {
     return state.comments.isClicked;
   });
+
+
+
+
+
 
   return (
     <HeaderAndBarLayout>
