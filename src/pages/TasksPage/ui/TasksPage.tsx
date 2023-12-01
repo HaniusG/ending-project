@@ -68,10 +68,6 @@ const TaskPage: React.FC = () => {
   });
 
 
-
-
-
-
   return (
     <HeaderAndBarLayout>
       <div>

@@ -73,7 +73,7 @@ export const addTaskGroup = createAsyncThunk(
         return ids.push(task.id);
       });
 
-      const max = ids ? Math.max(...ids) : 1000;
+      const max = ids ? Math.max(...ids) : 1;
 
       projectArrClone.push({ id: max + 1, ...postData });
 
@@ -89,7 +89,7 @@ export const addTaskGroup = createAsyncThunk(
         })
       );
 
-      const max = ids ? Math.max(...ids) : 1000;
+      const max = ids ? Math.max(...ids) : 1;
 
       task?.tasks.push({
         id: max + 1,
@@ -104,6 +104,25 @@ export const addTaskGroup = createAsyncThunk(
       const task = projectArrClone.find((task) => task.id === parentId);
       const taskItem = task.tasks.find((item: any)=>item.id === selfId)
       taskItem.name = postData;
+      await updateDoc(postRef, { board1: projectArrClone });
+    }else if(updateCase === "addTC"){
+
+      const task = projectArrClone.find((task) => task.id === parentId);
+      const taskItem = task.tasks.find((item: any)=>item.id === selfId)
+      
+      taskItem.comments.push({
+        id: 5,
+        author: {
+          id: 23,
+          name: "Esim Esiminchyan",
+          image:
+            "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
+        },
+        text: postData,
+        date: new Date().toDateString(),
+        replies: []
+      });
+      
       await updateDoc(postRef, { board1: projectArrClone });
     }
 

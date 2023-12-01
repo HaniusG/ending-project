@@ -26,7 +26,7 @@ const TaskItem: React.FC<TaskItemPropsI> = ({ item, parentId }) => {
 
   const handleClick = () => {
     dispatch(clickChange(true));
-    dispatch(commentChange(item.comments));
+    dispatch(commentChange({comments: item.comments, parentId, selfId: item.id}));
   };
 
   const handleTaskItemChange = () => {
