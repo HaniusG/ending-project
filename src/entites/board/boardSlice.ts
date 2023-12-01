@@ -9,6 +9,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { db } from "../../firebase";
 import { TaskItemProps, TaskProps } from "pages/TasksPage/TaksPage.interface";
 import { log } from "console";
+import { useSelector } from "react-redux";
+import { RootState } from "entites/store";
 
 interface initialStateBoard {
   board: any;
@@ -89,7 +91,7 @@ export const addTaskGroup = createAsyncThunk(
         })
       );
 
-      const max = ids ? Math.max(...ids) : 1;
+      const max = ids ? Math.max(...ids) : 1000;
 
       task?.tasks.push({
         id: max + 1,
@@ -109,20 +111,18 @@ export const addTaskGroup = createAsyncThunk(
 
       const task = projectArrClone.find((task) => task.id === parentId);
       const taskItem = task.tasks.find((item: any)=>item.id === selfId)
-      
+        
       taskItem.comments.push({
         id: 5,
         author: {
           id: 23,
-          name: "Esim Esiminchyan",
-          image:
-            "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
+          name: postData.name,
+          image: postData.image,
         },
-        text: postData,
+        text: postData.comment,
         date: new Date().toDateString(),
         replies: []
       });
-      
       await updateDoc(postRef, { board1: projectArrClone });
     }
 

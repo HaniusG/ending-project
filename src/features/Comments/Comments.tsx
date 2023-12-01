@@ -7,10 +7,14 @@ import { useSelector } from "react-redux";
 import { RootState } from "entites/store";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { addTaskGroup } from "entites/board/boardSlice";
+import { useDispatch } from "react-redux";
+import { commentChange } from "entites/comments/commentsSlice";
 
 const Comments: React.FC<CommentsProps> = ({ comments }) => {
   
+  const user = useSelector((state: RootState) => state.user.profile);
   const dispatchA = useAppDispatch();
+  const dispatch = useDispatch()
 
   const board1 = useSelector((state: RootState) => {
     return  state.board.board;
@@ -35,12 +39,27 @@ const Comments: React.FC<CommentsProps> = ({ comments }) => {
       dispatchA(
         addTaskGroup({
           id: board1[0].id,
-          postData: comment,
+          postData: {comment, name: user?.displayName, image: user?.photoURL},
           updateCase: 'addTC',
           parentId: commentInfo.parentId,
           selfId: commentInfo.selfId,
     })
-      )
+    )
+    const copy = JSON.parse(JSON.stringify(comments)) as typeof comments;
+    copy.push({
+      id: 5,
+      author: {
+        id: 23,
+        name: user && user.displayName ? user?.displayName: 'user',
+        image: user && user.photoURL ? user?.photoURL: 'no photo',
+      },
+      text: comment,
+      date: new Date().toDateString(),
+      replies: []
+    })  
+    dispatch(commentChange({comments: copy , parentId: commentInfo.parentId,
+        selfId: commentInfo.selfId}));
+      setInputClicked(false)
     }
   }
 

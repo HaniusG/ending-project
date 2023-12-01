@@ -24,10 +24,13 @@ const TaskItem: React.FC<TaskItemPropsI> = ({ item, parentId }) => {
    const dispatchA = useAppDispatch();
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleClick = async () => {
     dispatch(clickChange(true));
     dispatch(commentChange({comments: item.comments, parentId, selfId: item.id}));
   };
+
+
+
 
   const handleTaskItemChange = () => {
     setEditting(!isEditting)
