@@ -22,7 +22,6 @@ const LoginPage: React.FC = () => {
     try{
       await signInWithEmailAndPassword(auth, email, password);
       await navigate('/boards');
-    
     await((userCredential: any)=>{console.log(userCredential)});
     }catch(err){
       console.log(err);

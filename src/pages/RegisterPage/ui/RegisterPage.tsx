@@ -36,34 +36,12 @@ const RegisterPage = () => {
       <label htmlFor="email">Email</label>
       <input type="email" id="email" value={email}  onChange={(e) => setEmail(e.target.value)}/>
 
-      <label htmlFor="age">Age</label>
-      <input type="age" id="age" />
+ 
 
       <label htmlFor="password">Password</label>
       <input type="password" id="password" value={password}  onChange={(e) => setPassword(e.target.value)}/>
 
-      <div className={styles.genderOptions}>
-        <label htmlFor="gender">Gender</label>
-        <label>
-          <input
-            className={styles.customRadio}
-            type="radio"
-            name="gender"
-            value="male"
-          />
-          Male
-        </label>
-
-        <label>
-          <input
-            className={styles.customRadio}
-            type="radio"
-            name="gender"
-            value="female"
-          />
-          Female
-        </label>
-      </div>
+     
 
       <button type="button" onClick={registerWithEmailPass}>Register</button>
     </form>
