@@ -7,18 +7,18 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'entites/store';
 import { changeDragDropItems } from 'entites/tasks/taskSlice';
 import { useDispatch } from 'react-redux';
-import { fetchBoard } from 'entites/board/boardSlice';
+import { addTaskGroup, fetchBoard } from 'entites/board/boardSlice';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 
 
 const TaskGroup: React.FC = ({}) => {
+
+
   const dispatch = useDispatch();
 
-  const appDispatch = useAppDispatch()
+  const dispatchA = useAppDispatch()
 
-  const tasks = useSelector((state: RootState) => {
-    return state.tasks.tasks;
-  });
+
 
   const board1 = useSelector((state: RootState) => {
     
@@ -32,8 +32,8 @@ const TaskGroup: React.FC = ({}) => {
   
   
   useEffect(() => {
-    appDispatch(fetchBoard());
-  }, [appDispatch]);
+    dispatchA(fetchBoard());
+  }, [dispatchA]);
   
   
  
@@ -48,8 +48,8 @@ const TaskGroup: React.FC = ({}) => {
       return;
     }
 
-    const sourceColumn: TaskProps= tasks.find((item) => item.id.toString() === source.droppableId) as TaskProps;
-    const destinationColumn: TaskProps = tasks.find((item) => item.id.toString() === destination.droppableId) as TaskProps;
+    const sourceColumn: TaskProps= board1.board1.find((item: TaskProps) => item.id.toString() === source.droppableId) as TaskProps;
+    const destinationColumn: TaskProps = board1.board1.find((item: TaskItemProps) => item.id.toString() === destination.droppableId) as TaskProps;
     
     const newSourceCards: TaskItemProps[] = Array.from(sourceColumn?.tasks as TaskItemProps[])
     const [removedCard] = newSourceCards.splice(source.index, 1);
@@ -61,8 +61,12 @@ const TaskGroup: React.FC = ({}) => {
         ...sourceColumn,
         tasks: newSourceCards,
       };
-
-      dispatch(changeDragDropItems(tasks.map(column => column.id === newColumn.id ? newColumn : column)))
+      const tasks3 = board1.board1.map((column: TaskProps) => column.id === newColumn.id ? newColumn : column)
+      dispatchA(addTaskGroup({id: "R46dWLJPIg4MKU8rUl9N",
+        postData: tasks3,
+        updateCase: 'dnd',
+        parentId: 0,
+        selfId: 0,}))
     } else {
       const newDestinationCards: TaskItemProps[] = Array.from(destinationColumn.tasks);
       newDestinationCards.splice(destination.index, 0, removedCard);
@@ -78,13 +82,12 @@ const TaskGroup: React.FC = ({}) => {
         tasks: newDestinationCards
       }
       
-
-      dispatch(changeDragDropItems((tasks.map(column => {
+      const tasks2 = (board1.board1.map((column: TaskProps) => {
         if (column.id=== newSourceColumn.id) return newSourceColumn;
         if (column.id === newDestinationColumn.id) return newDestinationColumn;
         return column
-      }))))
-      
+      }))
+      dispatchA(addTaskGroup({id: "R46dWLJPIg4MKU8rUl9N", postData: tasks2, updateCase: 'dnd',parentId: 0, selfId: 0,}))
     }
   }
 
@@ -93,47 +96,47 @@ const TaskGroup: React.FC = ({}) => {
   
 
   return (
-    <>
-    {
-      board1 && board1.board1 ? 
-    board1.board1.map((task: TaskProps) => {
-      return (
-        <div>
+    // <>
+    // {
+    //   board1 && board1.board1 ? 
+    // board1.board1.map((task: TaskProps) => {
+    //   return (
+    //     <div>
         
-          <Task task={task} key={task.id} />
-        </div>
-      );
-    })
+    //       <Task task={task} key={task.id} />
+    //     </div>
+    //   );
+    // })
 
-    : null}
-    </>
+    // : null}
+    // </>
     
-    // <DragDropContext onDragEnd={onDragEnd}>
-    //    <div className={styles.taskGroup}>
-    //     {
-    //     tasks.map((task, index) => {
-    //       return (
-    //         <Droppable droppableId={task.id.toString()} key={task.id}>
-    //           {
-    //             (provided) =>{
-    //               return (
-    //                 <div
-    //                 {...provided.droppableProps}
-    //                   ref={provided.innerRef}
-    //                 >
-    //                   <Task task={task} key={task.id}/>
-    //                 </div>
-    //               )
-    //             }
-    //           }
-    //         </Droppable>
-    //       )
-    //     }
+    <DragDropContext onDragEnd={onDragEnd}>
+       <div className={styles.taskGroup}>
+        {board1 && board1 ?
+        board1.board1.map((task: TaskProps) => {
+          return (
+            <Droppable droppableId={task.id.toString()} key={task.id}>
+              {
+                (provided) =>{
+                  return (
+                    <div
+                    {...provided.droppableProps}
+                      ref={provided.innerRef}
+                    >
+                      <Task task={task} key={task.id}/>
+                    </div>
+                  )
+                }
+              }
+            </Droppable>
+          )
+        }
           
-    //     )
-    //   }
-    // </div>
-    // </DragDropContext>
+        ): null
+      }
+    </div>
+    </DragDropContext>
    
   )
 }

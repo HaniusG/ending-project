@@ -44,6 +44,7 @@ const Comments: React.FC<CommentsProps> = ({ comments }) => {
           parentId: commentInfo.parentId,
           selfId: commentInfo.selfId,
     })
+   
     )
     const copy = JSON.parse(JSON.stringify(comments)) as typeof comments;
     copy.push({
@@ -61,6 +62,8 @@ const Comments: React.FC<CommentsProps> = ({ comments }) => {
         selfId: commentInfo.selfId}));
       setInputClicked(false)
     }
+    setInputClicked(false)
+    setComment('')
   }
 
   return (

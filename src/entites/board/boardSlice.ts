@@ -42,6 +42,7 @@ export const createBoard = createAsyncThunk(
       taskState,
       tasks,
     });
+
     return { id: docRef.id, taskState, tasks };
   }
 );
@@ -110,7 +111,7 @@ export const addTaskGroup = createAsyncThunk(
 
       const task = projectArrClone.find((task) => task.id === parentId);
       const taskItem = task.tasks.find((item: any)=>item.id === selfId)
-        
+
       taskItem.comments.push({
         id: 5,
         author: {
@@ -122,6 +123,9 @@ export const addTaskGroup = createAsyncThunk(
         date: new Date().toDateString(),
         replies: []
       });
+      await updateDoc(postRef, { board1: projectArrClone });
+    }else if(updateCase === "dnd"){
+      projectArrClone = postData;
       await updateDoc(postRef, { board1: projectArrClone });
     }
 

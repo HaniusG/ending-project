@@ -45,6 +45,7 @@ const Task: React.FC<TaskPropsI> = ({ task }) => {
     })
       )
        setNewItemName('')
+       setAddNewClicked(false)
     }
   } 
   return (
@@ -57,24 +58,24 @@ const Task: React.FC<TaskPropsI> = ({ task }) => {
       </div>
       {task.tasks.map((item, index) => {
         return (
-          <TaskItem item={item} parentId={task.id} key={item.id} />
-          // <Draggable
-          //   key={item.id}
-          //   draggableId={item.id.toString()}
-          //   index={index}
-          // >
-          //   {(provided) => {
-          //     return (
-          //       <div
-          //         {...provided.draggableProps}
-          //         {...provided.dragHandleProps}
-          //         ref={provided.innerRef}
-          //       >
-          //         <TaskItem item={item} parentId={task.id} key={item.id} />
-          //       </div>
-          //     );
-          //   }}
-          // </Draggable>
+         
+          <Draggable
+            key={item.id}
+            draggableId={item.id.toString()}
+            index={index}
+          >
+            {(provided) => {
+              return (
+                <div
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
+                  ref={provided.innerRef}
+                >
+                  <TaskItem item={item} parentId={task.id} key={item.id} />
+                </div>
+              );
+            }}
+          </Draggable>
         );
       })}
       <div className={styles.taskBottom}>
