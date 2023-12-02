@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TaskItem.module.css";
-import { FaPen, FaAlignLeft, FaComment } from "react-icons/fa6";
+import { FaPen, FaAlignLeft, FaComment, FaTrash } from "react-icons/fa6";
 import { TaskItemPropsI } from "./TaskItem.interface";
 import { useDispatch, useSelector } from "react-redux";
 import { clickChange, commentChange } from "entites/comments/commentsSlice";
@@ -12,6 +12,8 @@ import { addTaskGroup } from "entites/board/boardSlice";
 const TaskItem: React.FC<TaskItemPropsI> = ({ item, parentId }) => {
   const [isEditting, setEditting] = useState(false)
   const [itemName, setItemName] =useState(item.name)
+  const [isDelete, setDelete] = useState(false)
+
 
   const tasks = useSelector((state: RootState) => {
     return state.tasks.tasks;
@@ -59,10 +61,13 @@ const TaskItem: React.FC<TaskItemPropsI> = ({ item, parentId }) => {
             <FaPen />
           </button>
         </div>
-
-        <button className={styles.bbutton}>
-          <FaAlignLeft />
-        </button>
+        {
+          !isDelete ?
+          <button className={styles.bbutton} onClick={()=> setDelete(true)}>
+          <FaTrash />
+        </button>:<div className={styles.deleteDiv}><p>Delete?</p><button className={styles.yesButton}>Yes</button><button className={styles.noButton} onClick={()=>setDelete(false)}>No</button></div>
+        }
+        
         <button className={styles.bbutton} onClick={handleClick}>
           <FaComment />
         </button>

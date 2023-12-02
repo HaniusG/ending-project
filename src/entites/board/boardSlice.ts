@@ -25,7 +25,7 @@ const initialState: initialStateBoard = {
 };
 
 
-export const fetchBoard= createAsyncThunk("boards/boaed1", async () => {
+export const fetchBoard= createAsyncThunk("boards/board1", async () => {
   const querySnapshot = await getDocs(collection(db, "boards"));
   return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 });
@@ -192,6 +192,7 @@ const boardSlice = createSlice({
       state.loading = false;
       state.error = action.error.message;
     },
+    
   },
 });
 

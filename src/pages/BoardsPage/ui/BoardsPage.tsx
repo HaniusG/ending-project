@@ -67,22 +67,12 @@ const BoardsPage = () => {
             </div>
           </div>
           <div className={styles.fullTemplates}>
-          {
-            boards.map((boards: any)=>{
-              return <Link to={`/tasks${boards.id}`}>
-
-
-
-              <TemplatePreviews
-                backgroundColor="#128EA2"
-                text="React.Js"
-                isTemplate={false}
-              />
-  
-              </Link>
+          {/* {
+            boards.map((boards)=>{
+            
             })
-          }
-           {/* <Link to='/tasks'>
+          } */}
+           <Link to='/tasks'>
 
 
 
@@ -93,7 +83,7 @@ const BoardsPage = () => {
             />
 
             </Link>
-             */}
+            
             {!addNewClicked ? <div className={styles.createBoard} onClick={()=>setAddNewClicked(true)}>+ Create new board</div>:
             (<div className={styles.addNewList}>
               <input
