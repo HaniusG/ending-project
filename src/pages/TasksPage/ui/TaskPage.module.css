@@ -72,3 +72,49 @@
 .addNewList button:hover{
   background-color: #64a0f4;
 }
+
+.modal {
+  padding: 15px;
+  margin: 20px;
+  border-radius: 8px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: 500px;
+  background-color: #16181b;
+  z-index: 4;
+  
+}
+
+.modal p{
+  font-size: 30px;
+}
+
+.buttonDiv{
+  padding: 30px 0  30px 0;
+}
+
+.buttonDiv button{
+  font-size: 20px;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.yesButton{
+  background-color: rgb(108, 43, 43);
+  margin-right: 10px;
+}
+
+.noButton{
+  font-size: 20px;
+  background-color: rgb(58, 108, 43);
+  border: none;
+  color: white;
+  padding: 10px;
+  margin-right: 10px;
+}

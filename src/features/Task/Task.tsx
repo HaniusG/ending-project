@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPen, FaAlignLeft, FaComment, FaCopy } from "react-icons/fa6";
+import { FaPen, FaAlignLeft, FaComment, FaCopy, FaTrash } from "react-icons/fa6";
 import styles from "./Task.module.css";
 import { TaskPropsI } from "./Task.interface";
 import TaskItem from "features/TaskItem";
@@ -10,10 +10,16 @@ import { addTaskGroup } from "entites/board/boardSlice";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useSelector } from "react-redux";
 import { RootState } from "entites/store";
+import Modal from "features/Modal";
+import { deleteClickChange, setParentId } from "entites/delete/deleteSlice";
 
 const Task: React.FC<TaskPropsI> = ({ task }) => {
   const [newItemName, setNewItemName] = useState("");
   const [addNewClicked, setAddNewClicked] = useState(false);
+  const [isDelete, setDelete] = useState(false);
+
+
+
 
   const board1 = useSelector((state: RootState) => {
     return  state.board.board;
@@ -25,6 +31,12 @@ const Task: React.FC<TaskPropsI> = ({ task }) => {
   const handleAddClick = () => {
     setAddNewClicked(true);
   };
+
+  const handleDeleteClick = () =>{
+    dispatch(deleteClickChange(true))
+    dispatch(setParentId(task.id))
+  }
+
 
 
   const onInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -52,8 +64,11 @@ const Task: React.FC<TaskPropsI> = ({ task }) => {
     <div className={styles.taskGroup}>
       <div className={styles.taskName}>
         <h4>{task.taskState}</h4>
-        <button className={styles.bbutton}>
-          <p>. . .</p>
+        <button className={styles.bbutton} onClick={ handleDeleteClick}>
+          <p className={styles.fatrash}>
+          <FaTrash/>
+          </p>
+         
         </button>
       </div>
       {task.tasks.map((item, index) => {

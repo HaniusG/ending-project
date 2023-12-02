@@ -12,6 +12,7 @@ import { addTaskGroup, createBoard } from "entites/board/boardSlice";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { TaskItemProps, TaskProps } from "../TaksPage.interface";
 import { log } from "console";
+import { deleteClickChange } from "entites/delete/deleteSlice";
 
 
 const TaskPage: React.FC = () => {
@@ -63,10 +64,34 @@ const TaskPage: React.FC = () => {
     return state.comments.comments;
   });
 
+  const deleteClick = useSelector((state: RootState)=>{
+    return state.delete.isClicked
+  })
+
+  const parentId = useSelector((state: RootState)=>{
+    return state.delete.parentId
+  })
+
+
+  console.log(deleteClick);
+  
+
   const isClicked = useSelector((state: RootState) => {
     return state.comments.isClicked;
   });
 
+  const handleDeleteTask = () => {
+    dispatchA(
+      addTaskGroup({
+        id: board1[0].id,
+        postData: "",
+        updateCase: "deleteTask",
+        parentId,
+        selfId: 0,
+      })
+    );
+    dispatch(deleteClickChange(false))
+  };
 
   return (
     <HeaderAndBarLayout>
@@ -97,8 +122,22 @@ const TaskPage: React.FC = () => {
               </Modal>
             </div>
           ) : null}
+          {deleteClick ? (
+            <div className={styles.modal}>
+                <p>Delete ?</p>
+                <div className={styles.buttonDiv}>
+                <button className={styles.yesButton} onClick={handleDeleteTask}>Yes</button>
+                <button className={styles.noButton} onClick={()=>dispatch(deleteClickChange(false))}>No</button>
+                </div>
+                
+            </div>
+          ) : null}
         </div>
+        
+      
         {isClicked ? <div className={styles.overlay}></div> : null}
+        {deleteClick ? <div className={styles.overlay}></div> : null}   
+      
       </div>
     </HeaderAndBarLayout>
   );

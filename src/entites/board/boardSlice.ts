@@ -133,6 +133,11 @@ export const addTaskGroup = createAsyncThunk(
       const idx = task.tasks.indexOf(taskItem)
       task.tasks.splice(idx, 1);
       await updateDoc(postRef, { board1: projectArrClone });
+    }else if(updateCase==='deleteTask'){
+      const task = projectArrClone.find((task) => task.id === parentId);
+      const idx = projectArrClone.indexOf(task)
+      projectArrClone.splice(idx, 1)
+      await updateDoc(postRef, { board1: projectArrClone });
     }
 
     return { id, board1: projectArrClone };
