@@ -1,6 +1,7 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDocs,
   updateDoc,
@@ -8,9 +9,7 @@ import {
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { db } from "../../firebase";
 import { TaskItemProps, TaskProps } from "pages/TasksPage/TaksPage.interface";
-import { log } from "console";
-import { useSelector } from "react-redux";
-import { RootState } from "entites/store";
+
 
 interface initialStateBoard {
   board: any;
@@ -127,6 +126,12 @@ export const addTaskGroup = createAsyncThunk(
       await updateDoc(postRef, { board1: projectArrClone });
     }else if(updateCase === "dnd"){
       projectArrClone = postData;
+      await updateDoc(postRef, { board1: projectArrClone });
+    }else if(updateCase==="deleteItem"){
+      const task = projectArrClone.find((task) => task.id === parentId);
+      const taskItem = task.tasks.find((item: any)=>item.id === selfId)
+      const idx = task.tasks.indexOf(taskItem)
+      task.tasks.splice(idx, 1);
       await updateDoc(postRef, { board1: projectArrClone });
     }
 
