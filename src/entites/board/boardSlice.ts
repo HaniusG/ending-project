@@ -24,7 +24,8 @@ const initialState: initialStateBoard = {
   error: null,
 };
 
-export const fetchBoard = createAsyncThunk("boards/boaed1", async () => {
+
+export const fetchBoard= createAsyncThunk("boards/boaed1", async () => {
   const querySnapshot = await getDocs(collection(db, "boards"));
   return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 });
@@ -132,6 +133,20 @@ export const addTaskGroup = createAsyncThunk(
     return { id, board1: projectArrClone };
   }
 );
+
+export const createNewBoard = createAsyncThunk(
+  "board/createBoard",
+  async (boardName: string) => {
+
+
+    const docRef = await addDoc(collection(db, "boards"), {
+      boardName,
+      boards: []
+    });
+    return { id: docRef.id, boardName, board1: []};
+  }
+);
+
 
 const boardSlice = createSlice({
   name: "board",

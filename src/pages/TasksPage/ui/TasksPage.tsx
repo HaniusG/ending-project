@@ -84,7 +84,7 @@ const TaskPage: React.FC = () => {
                 onChange={onInputChange}
                 placeholder="Add list name"
                 value={newTaskName}
-              />{" "}
+              />
               <button onClick={onAddNewClick}>
                 {newTaskName !== "" ? "Add new List" : "Close"}
               </button>
